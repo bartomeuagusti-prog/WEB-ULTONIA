@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "@/App.css";
 import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
 import ExperienceSection from "@/components/ExperienceSection";
 import ContactDialog from "@/components/ContactDialog";
 import {
@@ -19,7 +20,8 @@ function App() {
     <div className="App bg-[#FAFAFA]" id="top" data-testid="app-root">
       <Navbar onContact={openContact} />
       <main>
-        <ExperienceSection onContact={openContact} />
+        <Hero onContact={openContact} />
+        <ExperienceSection />
         <PassportSection />
         <StakeholdersSection />
         <PricingSection onContact={openContact} />

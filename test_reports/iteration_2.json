@@ -1,0 +1,25 @@
+{
+  "summary": "Iteration 2 frontend E2E test of Benlligat landing PASSED. New structural requirements verified: (a) Hero (data-testid='hero-section') is text-only — NO 3D canvas inside the hero; it shows Catalan headline, paragraph, both CTAs (cta-hero-provar, cta-hero-demo), three stat chips (8 anys / 100% / 0€) and the hero-scroll-hint. (b) The experience-section is below the hero with a two-column layout: at mid-scroll the canvas wrap (data-testid='experience-canvas-wrap', x=972–1552) and the visible caption h2 (x=368–816) do NOT overlap (no horizontal intersection). The mattress-3d-canvas is present. (c) All 5 captions are reachable by scroll: 'Crea i ubica el matalàs', 'Vida útil de 8 anys', 'Petjada de carboni', 'Manteniment i neteja', 'Llindar i reciclatge'. (d) Drag rotation on the canvas works without any console/page errors. (e) Lower sections render with expected content: passport-section ('BLG-0xA9F3'), stakeholders-section ('Hotelers' + 5 other actors visible), pricing-section with both pricing-card-freemium and pricing-card-professional, footer. (f) All 6 CTAs (navbar-cta, cta-hero-provar, cta-hero-demo, pricing-cta-freemium, pricing-cta-professional, footer-cta) open the contact-dialog (state=open, visible). (g) Empty submit shows error toast 'Cal omplir el nom i el correu electrònic.' and keeps dialog open. (h) Valid submit (TEST Maria / test@hotel.cat) shows success toast 'Gràcies! Ens posarem en contacte molt aviat.' and closes the dialog within ~3s. Zero console errors, zero page errors across the full flow. Catalan copy and green theme consistent.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "ExperienceSection: scroll listener uses requestAnimationFrame throttle and recomputes bounding rect each frame — fine for one section, but consider IntersectionObserver/ResizeObserver if more sticky sections are added.",
+    "Captions are absolutely positioned and always present in DOM; aria-hidden on inactive steps is correctly applied (good for a11y). Cosmetic note: focusable elements inside hidden captions (none currently) would still be reachable via Tab; not an issue today.",
+    "ContactDialog is intentionally localStorage-only (per problem statement — MOCKED, no backend by design). Email validation is presence-only; consider regex validation for stronger UX (already flagged in iter 1).",
+    "Mattress3D useFrame still updates each frame even when explode is stable; negligible perf impact but cheap to short-circuit on |delta|<eps."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "100%"},
+  "test_credentials": "None required (static frontend, no auth).",
+  "seed_data_creation": "Test lead written to localStorage during success-flow test: {nom:'TEST Maria', email:'test@hotel.cat'}. Not persisted server-side.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Static frontend, no backend. Hero is now text-only and the 3D lives in a separate two-column experience section (no overlap with text confirmed at mid-scroll: canvas x=972–1552 vs caption x=368–816). 5 captions cycle on scroll. Contact form is localStorage-only (MOCKED). Radix dialog stays in DOM with data-state='closed' after Escape — when chaining multiple CTA tests, wait ~1s between Escape and the next click, or assert data-state='open' instead of bare visibility. Dialog close after success has 900ms setTimeout + Radix animation; wait at least 2.5–3s before asserting closure.",
+  "rca of the issue": "N/A — no issues found. Initial intermittent failure on pricing CTAs in the chained test was a script-only race condition (Radix keeps the dialog element in DOM after Escape with data-state='closed'; wait_for_selector(visible) sometimes resolved to the closing instance). Re-running the pricing CTAs in isolation confirmed both open the dialog with data-state='open'."
+}

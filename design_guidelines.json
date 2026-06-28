@@ -1,0 +1,124 @@
+{
+  "project_name": "Benlligat",
+  "domain": "Circular Economy B2B SaaS for Hoteliers",
+  "theme": "Light",
+  "archetype": "1 (Organic & Earthy)",
+  "design_philosophy": "Premium Apple/Dyson style 3D experience. High structural clarity (Swiss grid) mixed with organic earthy tones. Focus on deep contrasts, highly polished scroll-driven 3D interactions, and clean, generous spacing to let the product breathe.",
+  "language": "ca",
+  "colors": {
+    "background": "#FAFAFA",
+    "surface": "#FFFFFF",
+    "surface_alt": "#F3F5F4",
+    "text_primary": "#0B2016",
+    "text_secondary": "#4A5D53",
+    "primary": "#1A5336",
+    "primary_hover": "#133D27",
+    "accent": "#A6E08A",
+    "accent_hover": "#8BC96F",
+    "border": "#E2E8E4"
+  },
+  "typography": {
+    "heading_font": "Cabinet Grotesk",
+    "body_font": "Outfit",
+    "scales": {
+      "h1": "text-5xl sm:text-6xl tracking-tighter leading-none",
+      "h2": "text-3xl sm:text-4xl tracking-tight leading-tight",
+      "h3": "text-xl sm:text-2xl tracking-tight",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm tracking-wide"
+    }
+  },
+  "layout_and_spacing": {
+    "container": "max-w-7xl mx-auto px-6 md:px-12",
+    "section_padding": "py-24 md:py-32",
+    "grid_system": "Bento Grid Protocol. High asymmetry in feature sections. Wide gaps (gap-8 to gap-12).",
+    "radius": "rounded-2xl md:rounded-3xl",
+    "shadows": {
+      "soft": "shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+      "glass": "shadow-[0_8px_32px_rgb(0,0,0,0.08)]"
+    }
+  },
+  "components": {
+    "nav": {
+      "style": "Glassmorphism (Crystal variant). backdrop-blur-xl bg-white/70 border-b border-white/40 sticky top-0 z-50",
+      "elements": "Brand logo, 4 key links, CTA 'Vols provar?' Button."
+    },
+    "hero": {
+      "style": "Split layout or full-screen immersive canvas. 3D Model sits prominently in the hero area or right half.",
+      "overlay": "Subtle grain texture or extremely light radial gradient to keep text readable.",
+      "cta": "Solid Primary (#1A5336) button, rounded-full px-8 py-4 text-white hover:-translate-y-1 transition-transform"
+    },
+    "buttons": {
+      "primary": "bg-[#1A5336] text-white hover:bg-[#133D27] rounded-full transition-all shadow-md font-medium",
+      "secondary": "bg-white text-[#0B2016] border border-[#E2E8E4] hover:bg-[#F3F5F4] rounded-full transition-all font-medium"
+    },
+    "forms": {
+      "inputs": "Shadcn based. bg-white border border-[#E2E8E4] rounded-lg focus:ring-2 focus:ring-[#A6E08A] focus:border-transparent text-[#0B2016]",
+      "labels": "text-sm font-medium text-[#4A5D53]"
+    }
+  },
+  "three_d_experience": {
+    "libraries_required": ["@react-three/fiber", "@react-three/drei", "framer-motion", "gsap"],
+    "model_requirements": "A segmented 3D mattress model (e.g., Cover, Foam Layer, Springs, Base).",
+    "interactions": {
+      "idle": "autoRotate using OrbitControls",
+      "drag": "enablePan={false} enableZoom={false} enableRotate={true} on OrbitControls",
+      "scroll_driven_disassembly": "Use `@react-three/drei` ScrollControls. Map scroll progress (using useScroll) to the Y-axis position of individual layers to create an 'exploded view' as the user scrolls down."
+    },
+    "lighting": "Studio lighting setup. Ambient light (intensity 0.5) + Directional Light (intensity 1.5, cast shadow) + Environment map (preset='city' or 'apartment') for photorealistic reflections."
+  },
+  "sections": [
+    {
+      "name": "Hero",
+      "content": "Headline about hotel mattress circular economy, 3D rotating mattress, 'Vols provar?' CTA."
+    },
+    {
+      "name": "Lifecycle & Features",
+      "content": "Scroll-driven section. As user scrolls, mattress explodes. Text blocks appear explaining 8-year useful life, threshold alerts, and maintenance logs."
+    },
+    {
+      "name": "Digital Passport & Blockchain",
+      "content": "High-tech clean bento grid layout. Shows digital passport, unequivocal blockchain-backed code, and carbon footprint tracking."
+    },
+    {
+      "name": "Stakeholders Ecosystem",
+      "content": "Logos and connections to Manufacturers, TIRGY (Waste managers), Certifiers, and Red Cross. Visual node-based or clean grid design."
+    },
+    {
+      "name": "Pricing & Contact",
+      "content": "Freemium pricing model info. 'Vols provar? / Demo' triggering a Contact Form modal or inline section."
+    }
+  ],
+  "accessibility_and_testing": {
+    "contrast": "Ensure APCA standards. Text over images must have soft gradient scrims.",
+    "motion": "Respect prefers-reduced-motion for the 3D canvas (fallback to static image if enabled).",
+    "testing": "All interactive elements must have data-testid attributes (e.g., data-testid='cta-hero-demo')."
+  },
+  "media": {
+    "icons_library": "lucide-react",
+    "images": {
+      "hero_ambient": {
+        "url": "https://images.pexels.com/photos/34496715/pexels-photo-34496715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Elegant hotel room in Dubai with ornate decor and plush bedding (Use with heavy white/light overlay to preserve text contrast)."
+      },
+      "logistics_warehouse": {
+        "url": "https://images.pexels.com/photos/4487383/pexels-photo-4487383.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Warehouse and logistics for TIRGY / Waste Manager section."
+      },
+      "sustainability_texture": {
+        "url": "https://images.unsplash.com/photo-1573519716358-1cdc98533bfa?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MDV8MHwxfHNlYXJjaHwxfHxncmVlbiUyMGxlYWYlMjB0ZXh0dXJlfGVufDB8fHx8MTc4MjY4NTk4OXww&ixlib=rb-4.1.0&q=85",
+        "description": "Organic green leaf texture for circular economy thematic background accents."
+      }
+    }
+  },
+  "instructions_to_main_agent": [
+    "Install required dependencies: @react-three/fiber, @react-three/drei, framer-motion, lucide-react.",
+    "Use pure HTML and Tailwind for the layout, reserving Shadcn UI components for complex interactions like the Contact form (Input, Textarea, Dialog/Modal) or specific buttons.",
+    "Set up a global canvas for the 3D model, utilizing ScrollControls from drei to bind the exploded view animation of the mattress layers to the scroll position.",
+    "Strictly follow the color palette provided (Greens/Earth Tones) to meet the 'Colors verds' requirement.",
+    "Ensure all text is written in Catalan.",
+    "Maintain the layout spacing generous (p-8 to p-16) adhering to the Apple/Dyson premium aesthetic.",
+    "Use the provided image URLs to support the narrative, applying appropriate opacities/overlays when text sits on top.",
+    "Implement the 'Vols provar?' CTA to open a contact modal using Shadcn Dialog."
+  ]
+}

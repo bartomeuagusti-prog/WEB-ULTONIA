@@ -1,0 +1,28 @@
+{
+  "summary": "Frontend-only E2E test of Benlligat static landing page completed successfully. All 9 functional requirements verified: page loads with navbar/hero/3D canvas, all 6 CTAs (cta-hero-provar, cta-hero-demo, navbar-cta, pricing-cta-freemium, pricing-cta-professional, footer-cta) correctly open the contact dialog. Empty form submission shows the expected error toast ('Cal omplir el nom i el correu electrònic.') and keeps the dialog open. Valid submission shows the success toast ('Gràcies! Ens posarem en contacte molt aviat.'), closes the dialog, and persists lead data in localStorage under 'benlligat_leads'. Scroll behaviour works: 4 progress-rail spans rendered, all 4 caption titles present in DOM (Vida útil de 8 anys, Petjada de carboni, Manteniment i neteja, Llindar de substitució), no JS errors during scroll. 3D Three.js canvas renders, drag rotation works without errors. PassportSection shows blockchain code 'BLG-0xA9F3·2026·MTL·8Y'. Stakeholders section shows all 6 actors including Hotelers/Fabricants/Gestors de residus/Certificadores/Creu Roja. Pricing shows both Freemium and Professional cards. Footer present. All copy is in Catalan and the green theme (#1A5336, #A6E08A, #E6EFE7) is consistently applied. Zero console errors and zero page errors observed across the full flow.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "ExperienceSection.jsx caption block uses position:absolute for all 4 captions in the same container; they are always in the DOM but visually toggled via opacity/transform. Functionally correct but means screen readers will read all 4 simultaneously. Consider aria-hidden on inactive steps.",
+    "ContactDialog.jsx stores leads only in localStorage by design (static frontend per user choice) — explicitly mocked behaviour, no backend integration. Documented as expected per request.",
+    "Mattress3D.jsx: useFrame loop runs every frame even when explode value is stable; minor optimisation possible by skipping when delta is < epsilon, but no user-facing impact.",
+    "Email input has type=email but no client-side format validation beyond non-empty check; only nom/email presence is validated. Acceptable for landing CTA but consider adding email regex check."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "100%"},
+  "test_credentials": "None required (static frontend, no auth).",
+  "seed_data_creation": "Test lead written to localStorage during success-flow test: {nom:'TEST Maria', email:'test@hotel.cat'}. Not persisted server-side.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Static frontend landing with no backend. Contact form is intentionally localStorage-only (mocked, by design). Dialog close has 900ms setTimeout + Radix exit animation, so when asserting dialog closure after submit, wait at least 2.5–3s before checking visibility. 3D canvas uses React Three Fiber with OrbitControls (autoRotate + drag). The experience section is 380vh tall with sticky canvas; all 4 captions are always in DOM (toggled via opacity).",
+  "rca of the issue": "N/A — no issues found."
+}

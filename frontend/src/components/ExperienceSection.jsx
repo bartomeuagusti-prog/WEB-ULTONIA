@@ -37,6 +37,30 @@ export default function ExperienceSection() {
 
   useEffect(() => {
     let raf = null;
+    const introStarted = { current: false };
+    const introActive = { current: false };
+
+    const startIntro = () => {
+      introStarted.current = true;
+      introActive.current = true;
+      const dur = 2600;
+      const t0 = performance.now();
+      const tick = (now) => {
+        const t = Math.min(1, (now - t0) / dur);
+        // smooth 0 -> 1 -> 0 (expand then re-join)
+        const v = Math.sin(t * Math.PI);
+        const eased = v * v * (3 - 2 * v); // smoothstep on the bell curve
+        explodeRef.current = eased;
+        if (t < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          explodeRef.current = 0;
+          introActive.current = false;
+        }
+      };
+      requestAnimationFrame(tick);
+    };
+
     const onScroll = () => {
       if (raf) return;
       raf = requestAnimationFrame(() => {
@@ -47,7 +71,14 @@ export default function ExperienceSection() {
         const vh = window.innerHeight;
         const p = Math.min(1, Math.max(0, -rect.top / (rect.height - vh)));
         const e = Math.min(1, Math.max(0, (p - 0.08) / 0.82));
-        explodeRef.current = e;
+
+        // trigger the one-time intro when the section first gets pinned
+        if (!introStarted.current && rect.top <= 1 && rect.bottom > vh) {
+          startIntro();
+        }
+        if (!introActive.current) {
+          explodeRef.current = e;
+        }
         setExplode(e);
       });
     };

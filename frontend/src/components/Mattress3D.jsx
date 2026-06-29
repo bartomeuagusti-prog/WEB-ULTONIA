@@ -23,8 +23,8 @@ function makeQuiltTexture() {
   ctx.fillStyle = "#f4f3ee";
   ctx.fillRect(0, 0, s, s);
   const step = s / 6;
-  ctx.strokeStyle = "rgba(120,120,110,0.28)";
-  ctx.lineWidth = 5;
+  ctx.strokeStyle = "rgba(110,110,100,0.38)";
+  ctx.lineWidth = 6;
   for (let i = -6; i <= 12; i++) {
     ctx.beginPath();
     ctx.moveTo(i * step, 0);
@@ -35,20 +35,28 @@ function makeQuiltTexture() {
     ctx.lineTo(i * step + s, 0);
     ctx.stroke();
   }
-  // tuft dots + stitches at diamond centers
+  // tuft dimples at diamond centers
   for (let x = 0; x <= 6; x++) {
     for (let y = 0; y <= 6; y++) {
-      const px = x * step;
-      const py = y * step;
-      ctx.fillStyle = "rgba(90,90,80,0.35)";
+      ctx.fillStyle = "rgba(80,80,70,0.45)";
       ctx.beginPath();
-      ctx.arc(px, py, 4, 0, Math.PI * 2);
+      ctx.arc(x * step, y * step, 5, 0, Math.PI * 2);
       ctx.fill();
     }
   }
+  // faint BIOCERAMICS branding text
+  ctx.fillStyle = "rgba(120,120,110,0.32)";
+  ctx.font = "bold 22px Arial";
+  ctx.textAlign = "center";
+  for (let row = 0; row < 4; row++) {
+    ctx.save();
+    ctx.translate(s / 2, 70 + row * 130);
+    ctx.fillText("BIOCERAMICS", 0, 0);
+    ctx.restore();
+  }
   const t = new THREE.CanvasTexture(c);
   t.wrapS = t.wrapT = THREE.RepeatWrapping;
-  t.repeat.set(5, 3);
+  t.repeat.set(4, 2.4);
   t.colorSpace = THREE.SRGBColorSpace;
   t.anisotropy = 8;
   return t;
@@ -146,9 +154,24 @@ function SpringCore({ thickness }) {
     return { springs, spacingX, spacingZ, usableD };
   }, []);
 
-  const springH = thickness * 0.97;
+  const springH = thickness * 0.99;
   const radius = Math.min(built.spacingX, built.spacingZ) * 0.46;
-  const capH = Math.max(0.05, springH - radius * 2);
+
+  // beaded "pocket spring" profile (stacked bulges) via a lathe geometry
+  const beadGeom = useMemo(() => {
+    const pts = [];
+    const seg = 48;
+    const beads = 4;
+    pts.push(new THREE.Vector2(0.001, -springH / 2));
+    for (let k = 0; k <= seg; k++) {
+      const ty = k / seg;
+      const y = -springH / 2 + ty * springH;
+      const bulge = 0.66 + 0.34 * Math.abs(Math.sin(ty * Math.PI * beads));
+      pts.push(new THREE.Vector2(radius * bulge, y));
+    }
+    pts.push(new THREE.Vector2(0.001, springH / 2));
+    return new THREE.LatheGeometry(pts, 16);
+  }, [radius, springH]);
 
   // a few bare metal coils sitting in the front-centre, in place of some white springs
   const coils = useMemo(() => {
@@ -162,9 +185,9 @@ function SpringCore({ thickness }) {
 
   return (
     <group>
-      <Instances limit={built.springs.length} castShadow receiveShadow>
-        <capsuleGeometry args={[radius, capH, 4, 10]} />
-        <meshStandardMaterial roughness={0.6} metalness={0.05} />
+      <Instances limit={built.springs.length} range={built.springs.length} castShadow receiveShadow>
+        <primitive object={beadGeom} attach="geometry" />
+        <meshStandardMaterial roughness={0.58} metalness={0.05} />
         {built.springs.map((d, idx) => (
           <Instance key={idx} position={d.pos} color={d.color} />
         ))}
@@ -248,7 +271,7 @@ function MattressGroup({ explodeRef }) {
   });
 
   return (
-    <group rotation={[0, -0.4, 0]}>
+    <group rotation={[0, -0.15, 0]}>
       {BOX_LAYERS.map((layer, i) => (
         <group key={layer.key} ref={(el) => (refs.current[i] = el)} position={[0, RESTING_Y[i], 0]}>
           <Layer layer={layer} quiltTex={quiltTex} coirTex={coirTex} />
@@ -277,9 +300,9 @@ function Scene({ explodeRef }) {
         enableZoom={false}
         enableRotate
         autoRotate
-        autoRotateSpeed={0.95}
-        minPolarAngle={Math.PI / 3.6}
-        maxPolarAngle={Math.PI / 1.95}
+        autoRotateSpeed={0.8}
+        minPolarAngle={Math.PI * 0.28}
+        maxPolarAngle={Math.PI * 0.46}
         makeDefault
       />
     </>
@@ -292,7 +315,7 @@ export default function Mattress3D({ explodeRef }) {
       className="canvas-grab"
       shadows
       dpr={[1, 2]}
-      camera={{ position: [0, 2.6, 10.5], fov: 36 }}
+      camera={{ position: [5.2, 6.4, 8.6], fov: 32 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       data-testid="mattress-3d-canvas"
     >

@@ -13,6 +13,7 @@ import {
   BadgeCheck,
   HeartHandshake,
   Building2,
+  Landmark,
   Check,
   Leaf,
   ArrowRight,
@@ -110,10 +111,10 @@ export function PassportSection() {
 const ACTORS = [
   { icon: Building2, t: "Hotelers", d: "Creen i ubiquen els matalassos a l'inventari." },
   { icon: Factory, t: "Fabricants", d: "Aporten dades tècniques i de petjada de carboni." },
-  { icon: Truck, t: "Gestors de residus", d: "Com TIRGY: recollida, tractament i reciclatge." },
+  { icon: Truck, t: "Gestors de residus", d: "Com TIRGY: planifiquen la recollida, la distribució, el tractament i el reciclatge." },
   { icon: BadgeCheck, t: "Certificadores", d: "Validen l'origen, el procés i la qualitat." },
-  { icon: HeartHandshake, t: "Creu Roja i tercers", d: "Reintroducció social dels matalassos reutilitzables." },
-  { icon: Recycle, t: "Actors del cicle", d: "Tots comparteixen una mateixa font de veritat." },
+  { icon: HeartHandshake, t: "Entitats del tercer sector", d: "Reaprofitament i reintroducció social dels matalassos reutilitzables per allargar-ne la vida útil." },
+  { icon: Landmark, t: "Administració", d: "Tots comparteixen una mateixa font de veritat." },
 ];
 
 export function StakeholdersSection() {
@@ -130,11 +131,11 @@ export function StakeholdersSection() {
             Ecosistema connectat
           </Badge>
           <h2 className="font-display text-4xl sm:text-5xl tracking-tight mt-5 leading-tight">
-            Una informació, tots els stakeholders.
+            La mateixa dada a tots els stakeholders.
           </h2>
           <p className="text-lg text-white/70 mt-5 leading-relaxed">
             Benlligat comparteix la informació de cada matalàs amb fabricants, gestors de
-            residus, certificadores i tercers com la Creu Roja, perquè tot el cicle del
+            residus, certificadores i entitats del tercer sector, perquè tot el cicle del
             producte treballi amb les mateixes dades.
           </p>
         </div>
@@ -165,7 +166,7 @@ const PLANS = [
     price: "0€",
     period: "/ sempre",
     desc: "Comença a controlar el cicle de vida dels teus matalassos sense cost.",
-    features: ["Fins a 25 matalassos", "Passaport digital bàsic", "Inventari i vida útil de 8 anys", "Registre de manteniment"],
+    features: ["Fins a 200 matalassos", "Passaport digital bàsic", "Inventari i vida útil de 8 anys", "Registre de manteniment"],
     cta: "Comença gratis",
     highlight: false,
   },
@@ -174,7 +175,7 @@ const PLANS = [
     price: "A mida",
     period: "",
     desc: "Per a cadenes i grups hotelers que volen control total i traçabilitat completa.",
-    features: ["Matalassos il·limitats", "Blockchain i codi inequívoc", "Petjada de carboni i informes", "Integració amb TIRGY i tercers", "Suport prioritari"],
+    features: ["Matalassos il·limitats", "Blockchain i codi inequívoc", "Petjada de carboni i informes", "Integracions amb tercers (API)", "Suport prioritari"],
     cta: "Vols provar?",
     highlight: true,
   },

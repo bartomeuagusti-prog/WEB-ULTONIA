@@ -125,36 +125,45 @@ export default function ExperienceSection() {
                   {CAPTIONS.map((_, i) => (
                     <span
                       key={i}
-                      className="h-9 w-1 rounded-full transition-colors duration-300"
-                      style={{ background: activeStep >= i ? "#1A5336" : "#D8E2DA" }}
+                      className="w-1 rounded-full transition-all duration-500 ease-out"
+                      style={{
+                        height: activeStep === i ? 40 : 28,
+                        background: activeStep >= i ? "#1A5336" : "#D8E2DA",
+                        opacity: activeStep === i ? 1 : activeStep > i ? 0.8 : 0.5,
+                      }}
                     />
                   ))}
                 </div>
 
-                <div className="relative min-h-[300px] lg:pl-8">
-                  {CAPTIONS.map((c, i) => (
-                    <div
-                      key={i}
-                      aria-hidden={activeStep !== i}
-                      className="absolute inset-x-0 top-0 max-w-md"
-                      style={{
-                        opacity: activeStep === i ? 1 : 0,
-                        transform: `translateY(${activeStep === i ? 0 : 24}px)`,
-                        transition: "opacity 0.5s ease, transform 0.5s ease",
-                        pointerEvents: activeStep === i ? "auto" : "none",
-                      }}
-                    >
-                      <div className="flex items-center gap-3 text-sm font-medium text-[#1A5336]">
-                        <span className="font-display text-lg">{String(i + 1).padStart(2, "0")}</span>
-                        <span className="h-px w-8 bg-[#1A5336]/40" />
-                        <span className="tracking-wide uppercase text-xs">{c.tag}</span>
+                <div className="relative min-h-[320px] lg:pl-8">
+                  {CAPTIONS.map((c, i) => {
+                    const active = activeStep === i;
+                    return (
+                      <div
+                        key={i}
+                        aria-hidden={!active}
+                        className="absolute inset-x-0 top-0 max-w-md will-change-[transform,opacity]"
+                        style={{
+                          opacity: active ? 1 : 0,
+                          transform: `translateY(${active ? 0 : 36}px) scale(${active ? 1 : 0.97})`,
+                          filter: active ? "blur(0px)" : "blur(7px)",
+                          transition:
+                            "opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1), filter 0.6s ease",
+                          pointerEvents: active ? "auto" : "none",
+                        }}
+                      >
+                        <div className="flex items-center gap-3 text-sm font-medium text-[#1A5336]">
+                          <span className="font-display text-lg">{String(i + 1).padStart(2, "0")}</span>
+                          <span className="h-px w-8 bg-[#1A5336]/40" />
+                          <span className="tracking-wide uppercase text-xs">{c.tag}</span>
+                        </div>
+                        <h2 className="font-display text-4xl sm:text-5xl tracking-tight text-[#0B2016] mt-3 leading-[1.02]">
+                          {c.title}
+                        </h2>
+                        <p className="mt-4 text-lg text-[#4A5D53] leading-relaxed">{c.body}</p>
                       </div>
-                      <h2 className="font-display text-4xl sm:text-5xl tracking-tight text-[#0B2016] mt-3 leading-[1.02]">
-                        {c.title}
-                      </h2>
-                      <p className="mt-4 text-lg text-[#4A5D53] leading-relaxed">{c.body}</p>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>

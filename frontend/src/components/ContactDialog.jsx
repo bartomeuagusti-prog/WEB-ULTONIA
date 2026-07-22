@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Leaf, Loader2 } from "lucide-react";
+import { api } from "@/lib/api";
 
 export default function ContactDialog({ open, onOpenChange }) {
   const [submitting, setSubmitting] = useState(false);
@@ -19,26 +20,30 @@ export default function ContactDialog({ open, onOpenChange }) {
 
   const update = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.nom || !form.email) {
       toast.error("Cal omplir el nom i el correu electrònic.");
       return;
     }
     setSubmitting(true);
-    setTimeout(() => {
-      try {
-        const leads = JSON.parse(localStorage.getItem("benlligat_leads") || "[]");
-        leads.push({ ...form, ts: new Date().toISOString() });
-        localStorage.setItem("benlligat_leads", JSON.stringify(leads));
-      } catch (_) {}
-      setSubmitting(false);
+    try {
+      await api.post("/leads", form);
       onOpenChange(false);
       setForm({ nom: "", hotel: "", email: "", missatge: "" });
       toast.success("Gràcies! Ens posarem en contacte molt aviat.", {
         description: "Un membre de l'equip de Benlligat et prepararà una demo personalitzada.",
       });
-    }, 900);
+    } catch (err) {
+      const detail = err?.response?.data?.detail;
+      toast.error(
+        typeof detail === "string"
+          ? detail
+          : "No s'ha pogut enviar. Torna-ho a provar en un moment.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "@/App.css";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -11,8 +12,9 @@ import {
   Footer,
 } from "@/components/StaticSections";
 import { Toaster } from "@/components/ui/sonner";
+import Admin from "@/pages/Admin";
 
-function App() {
+function Landing() {
   const [contactOpen, setContactOpen] = useState(false);
   const openContact = () => setContactOpen(true);
 
@@ -28,8 +30,19 @@ function App() {
       </main>
       <Footer onContact={openContact} />
       <ContactDialog open={contactOpen} onOpenChange={setContactOpen} />
-      <Toaster position="top-center" richColors />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+      <Toaster position="top-center" richColors />
+    </BrowserRouter>
   );
 }
 

@@ -4,7 +4,6 @@ import "@/App.css";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ExperienceSection from "@/components/ExperienceSection";
-import ExperienceAlternatives from "@/components/ExperienceAlternatives";
 import ContactDialog from "@/components/ContactDialog";
 import {
   PassportSection,
@@ -25,7 +24,6 @@ function Landing() {
       <main>
         <Hero onContact={openContact} />
         <ExperienceSection />
-        <ExperienceAlternatives />
         <PassportSection />
         <StakeholdersSection />
         <PricingSection onContact={openContact} />

@@ -255,18 +255,19 @@ function Layer({ layer, quiltTex, coirTex }) {
   );
 }
 
-function MattressGroup({ explodeRef }) {
+function MattressGroup({ explodeRef, reducedMotion }) {
   const refs = useRef([]);
   const quiltTex = useMemo(() => makeQuiltTexture(), []);
   const coirTex = useMemo(() => makeCoirTexture(), []);
 
   useFrame(() => {
     const e = explodeRef.current ?? 0;
+    const blend = reducedMotion ? 1 : 0.1;
     BOX_LAYERS.forEach((layer, i) => {
       const g = refs.current[i];
       if (!g) return;
       const target = RESTING_Y[i] * (1 + EXPLODE_K * e);
-      g.position.y += (target - g.position.y) * 0.1;
+      g.position.y += (target - g.position.y) * blend;
     });
   });
 
@@ -281,7 +282,8 @@ function MattressGroup({ explodeRef }) {
   );
 }
 
-function Scene({ explodeRef }) {
+function Scene({ explodeRef, reducedMotion }) {
+  const mattress = <MattressGroup explodeRef={explodeRef} reducedMotion={reducedMotion} />;
   return (
     <>
       <ambientLight intensity={0.75} />
@@ -289,9 +291,13 @@ function Scene({ explodeRef }) {
       <directionalLight position={[-7, 5, -5]} intensity={0.4} color="#cfe9c0" />
       <pointLight position={[0, 6, 8]} intensity={0.45} />
 
-      <Float speed={1.0} rotationIntensity={0} floatIntensity={0.3} floatingRange={[0, 0.1]}>
-        <MattressGroup explodeRef={explodeRef} />
-      </Float>
+      {reducedMotion ? (
+        mattress
+      ) : (
+        <Float speed={1.0} rotationIntensity={0} floatIntensity={0.3} floatingRange={[0, 0.1]}>
+          {mattress}
+        </Float>
+      )}
 
       <ContactShadows position={[0, -2.05, 0]} opacity={0.3} scale={14} blur={2.8} far={5} color="#0b2016" />
 
@@ -299,7 +305,7 @@ function Scene({ explodeRef }) {
         enablePan={false}
         enableZoom={false}
         enableRotate
-        autoRotate
+        autoRotate={!reducedMotion}
         autoRotateSpeed={0.8}
         minPolarAngle={Math.PI * 0.28}
         maxPolarAngle={Math.PI * 0.46}
@@ -309,7 +315,7 @@ function Scene({ explodeRef }) {
   );
 }
 
-export default function Mattress3D({ explodeRef }) {
+export default function Mattress3D({ explodeRef, reducedMotion = false }) {
   return (
     <Canvas
       className="canvas-grab"
@@ -320,7 +326,7 @@ export default function Mattress3D({ explodeRef }) {
       data-testid="mattress-3d-canvas"
     >
       <Suspense fallback={null}>
-        <Scene explodeRef={explodeRef} />
+        <Scene explodeRef={explodeRef} reducedMotion={reducedMotion} />
       </Suspense>
     </Canvas>
   );

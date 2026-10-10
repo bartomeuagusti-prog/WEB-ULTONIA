@@ -6,7 +6,6 @@ const LINKS = [
   { label: "Experiència", href: "#experiencia" },
   { label: "Passaport", href: "#passaport" },
   { label: "Ecosistema", href: "#ecosistema" },
-  { label: "Preus", href: "#preus" },
 ];
 
 export default function Navbar({ onContact }) {

@@ -67,112 +67,6 @@ function focusLine() {
   return Math.min(window.innerHeight * 0.4, 440);
 }
 
-function StepArt({ index }) {
-  const common = {
-    viewBox: "0 0 200 112",
-    className: "h-16 w-full",
-    fill: "none",
-    "aria-hidden": true,
-    focusable: "false",
-  };
-
-  if (index === 0) {
-    return (
-      <svg {...common}>
-        <rect x="34" y="34" width="108" height="56" rx="12" fill="#F7FAF7" stroke="#1A5336" strokeWidth="1.5" />
-        <path d="M34 52h108" stroke="#1A5336" strokeWidth="1.25" />
-        <path d="M62 34v56M90 34v56M118 34v56" stroke="#A6E08A" strokeWidth="1.6" />
-        <rect x="46" y="64" width="40" height="14" rx="4" fill="#fff" stroke="#1A5336" strokeWidth="1" />
-        <path d="M54 71h24" stroke="#1A5336" strokeWidth="1.2" strokeLinecap="round" />
-        <path
-          d="M158 20c-6.4 0-11 4.8-11 10.7 0 7.8 11 16.8 11 16.8s11-9 11-16.8C169 24.8 164.4 20 158 20z"
-          fill="#1A5336"
-        />
-        <circle cx="158" cy="30.5" r="3.4" fill="#A6E08A" />
-      </svg>
-    );
-  }
-
-  if (index === 1) {
-    return (
-      <svg {...common}>
-        <rect x="22" y="48" width="156" height="10" rx="5" fill="#E6EFE7" />
-        <rect x="22" y="48" width="156" height="10" rx="5" fill="#1A5336" />
-        {Array.from({ length: 9 }).map((_, i) => (
-          <path
-            key={i}
-            d={`M${22 + i * 19.5} 66v8`}
-            stroke={i === 8 ? "#1A5336" : "#C5D4CB"}
-            strokeWidth="1.4"
-            strokeLinecap="round"
-          />
-        ))}
-        <text x="22" y="92" fill="#4A5D53" fontSize="11" fontFamily="Outfit, sans-serif">
-          0
-        </text>
-        <text x="178" y="92" textAnchor="end" fill="#1A5336" fontSize="13" fontFamily="Outfit, sans-serif" fontWeight="600">
-          8 anys
-        </text>
-      </svg>
-    );
-  }
-
-  if (index === 2) {
-    return (
-      <svg {...common}>
-        <circle cx="100" cy="56" r="30" fill="#F4F8F4" stroke="#1A5336" strokeWidth="1.5" />
-        <path d="M100 74c0-14 9-26 20-30-3 15-11 26-20 30z" fill="#1A5336" />
-        <path d="M100 74c0-14-9-26-20-30 3 15 11 26 20 30z" fill="#1A5336" opacity="0.82" />
-        <path d="M100 74V50" stroke="#A6E08A" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    );
-  }
-
-  if (index === 3) {
-    return (
-      <svg {...common}>
-        {[0, 1, 2].map((row) => {
-          const y = 22 + row * 26;
-          const done = row === 0;
-          return (
-            <g key={row} opacity={done ? 1 : 0.45}>
-              <rect x="36" y={y} width="128" height="20" rx="6" fill="#fff" stroke="#E2E8E4" />
-              <circle cx="52" cy={y + 10} r="5.5" fill={done ? "#1A5336" : "none"} stroke="#1A5336" strokeWidth="1.2" />
-              {done && (
-                <path
-                  d={`M49.2 ${y + 10.2}l2 2.1 3.8-4`}
-                  stroke="#A6E08A"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              )}
-              <path
-                d={`M66 ${y + 10}h${done ? 36 : 28}`}
-                stroke={done ? "#1A5336" : "#C5D4CB"}
-                strokeWidth="1.6"
-                strokeLinecap="round"
-              />
-            </g>
-          );
-        })}
-      </svg>
-    );
-  }
-
-  return (
-    <svg {...common}>
-      <path d="M64 70c2-22 58-26 70-4" stroke="#1A5336" strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M128 58l10 6-10 2" fill="#1A5336" />
-      <path d="M136 74c-2 20-56 24-70 2" stroke="#1A5336" strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M72 84l-10-8 8-4" fill="#1A5336" />
-      <rect x="84" y="48" width="32" height="20" rx="5" fill="#fff" stroke="#1A5336" strokeWidth="1.4" />
-      <path d="M84 56h32" stroke="#A6E08A" strokeWidth="1.6" />
-      <path d="M96 48v20M108 48v20" stroke="#E6EFE7" strokeWidth="1.4" />
-    </svg>
-  );
-}
-
 export default function ExperienceSection() {
   const reduced = usePrefersReducedMotion();
   const explodeRef = useRef(0);
@@ -204,8 +98,12 @@ export default function ExperienceSection() {
         const rawTop = getComputedStyle(wrap).top;
         const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
         const stickyTop = rawTop.endsWith("rem") ? parseFloat(rawTop) * rootPx : parseFloat(rawTop) || 0;
+        const nav = document.querySelector("header");
+        const navBottom = nav ? nav.getBoundingClientRect().bottom : 64;
+        const fadeDistance = Math.max(8, stickyTop - navBottom);
         const overflow = stickyTop - wrap.getBoundingClientRect().top;
-        wrap.style.opacity = overflow > 2 ? String(Math.max(0, 1 - overflow / 48)) : "1";
+        // Transparent by the time the panel meets the navbar, so it never shows underneath.
+        wrap.style.opacity = overflow > 1 ? String(Math.max(0, 1 - overflow / fadeDistance)) : "1";
       }
 
       if (active !== activeRef.current) {
@@ -287,7 +185,7 @@ export default function ExperienceSection() {
                   }}
                   data-testid={`experience-step-${step.id}`}
                   data-active={active ? "true" : "false"}
-                  className="relative pb-8 lg:pb-[16vh]"
+                  className={`relative ${i === STEPS.length - 1 ? "pb-0" : "pb-8 lg:pb-[16vh]"}`}
                 >
                   {i < STEPS.length - 1 && (
                     <span
@@ -301,7 +199,7 @@ export default function ExperienceSection() {
                     type="button"
                     onClick={() => goTo(i)}
                     aria-current={active ? "step" : undefined}
-                    className={`relative z-10 grid w-full grid-cols-[2.75rem_minmax(0,1fr)] gap-x-3 gap-y-3 rounded-3xl px-1 py-3 text-left font-[inherit] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A6E08A] focus-visible:ring-offset-2 motion-reduce:transition-none lg:grid-cols-[3rem_minmax(0,1fr)_8.5rem] lg:gap-x-4 lg:px-2 ${
+                    className={`relative z-10 grid w-full grid-cols-[2.75rem_minmax(0,1fr)] gap-x-3 rounded-3xl px-1 py-3 text-left font-[inherit] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A6E08A] focus-visible:ring-offset-2 motion-reduce:transition-none lg:grid-cols-[3rem_minmax(0,1fr)] lg:gap-x-4 lg:px-2 ${
                       active ? "bg-white shadow-[0_8px_30px_rgb(0,0,0,0.05)]" : "hover:bg-white/50"
                     }`}
                   >
@@ -321,22 +219,15 @@ export default function ExperienceSection() {
                       <span className="mt-1 block font-display text-2xl tracking-tight text-[#0B2016] lg:text-[1.7rem] lg:leading-tight">
                         {step.title}
                       </span>
-                      <span className="mt-3 block max-w-xl text-base leading-relaxed text-[#4A5D53]">{step.body}</span>
-                    </span>
-                    <span
-                      className={`col-start-2 grid h-[4.75rem] place-items-center rounded-2xl border border-[#E2E8E4] bg-[#F7FAF7] px-2 lg:col-start-3 lg:h-auto lg:min-h-[6.5rem] ${
-                        active ? "" : "opacity-70"
-                      }`}
-                    >
-                      <StepArt index={i} />
+                      <span className="mt-3 block text-base leading-relaxed text-[#4A5D53]">{step.body}</span>
                     </span>
                   </button>
                 </li>
               );
             })}
           </ol>
-          {/* Keeps the mattress pinned through step 05, then releases with the section. */}
-          <div className="h-[22vh] lg:h-[42vh]" aria-hidden="true" />
+          {/* Short runway so step 05 can activate while the mattress is still fully on screen. */}
+          <div className="h-8 lg:h-28" aria-hidden="true" />
           </div>
         </div>
       </div>

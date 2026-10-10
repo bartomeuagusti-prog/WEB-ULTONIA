@@ -35,8 +35,19 @@ const STEPS = [
   },
 ];
 
-// Midpoint of each explode band the previous section used: floor(e * 5).
-const STEP_POSE = [0.1, 0.3, 0.5, 0.7, 0.9];
+// Step 01 stays closed. Opening is spread across steps 02–05.
+const STEP_POSE = [0, 0.32, 0.56, 0.8, 1];
+
+function explodeFor(active, local) {
+  if (active <= 0) {
+    if (local < 0.84) return 0;
+    const t = (local - 0.84) / 0.16;
+    return STEP_POSE[1] * t * t;
+  }
+  const from = STEP_POSE[active];
+  const to = active >= STEP_POSE.length - 1 ? 1 : STEP_POSE[active + 1];
+  return from + (to - from) * local;
+}
 
 function pad(n) {
   return String(n + 1).padStart(2, "0");
@@ -59,8 +70,9 @@ function usePrefersReducedMotion() {
 function focusLine() {
   const mobile = window.matchMedia("(max-width: 1023px)").matches;
   if (mobile) {
-    const mattress = Math.min(Math.max(window.innerHeight * 0.32, 200), 260);
-    return 64 + mattress + 36;
+    const wrap = document.querySelector('[data-testid="experience-canvas-wrap"]');
+    if (wrap) return wrap.getBoundingClientRect().bottom + 56;
+    return 64 + 280;
   }
   return Math.min(window.innerHeight * 0.4, 440);
 }
@@ -198,8 +210,7 @@ export default function ExperienceSection() {
         active < STEPS.length - 1 ? nodes[active + 1].getBoundingClientRect().top : current.top + current.height;
       const span = Math.max(1, nextTop - current.top);
       const local = Math.min(1, Math.max(0, (y + 16 - current.top) / span));
-      const scrub = Math.min(1, (active + local) / STEPS.length);
-      explodeRef.current = reduced ? STEP_POSE[active] : scrub;
+      explodeRef.current = reduced ? STEP_POSE[active] : explodeFor(active, local);
 
       if (active !== activeRef.current) {
         activeRef.current = active;
@@ -251,19 +262,24 @@ export default function ExperienceSection() {
         <h2 className="sr-only">Experiència: el cicle de vida del matalàs</h2>
         <div className="lg:flex lg:items-start lg:gap-14">
           <div
-            className="sticky top-16 z-20 -mx-6 mb-2 h-[32vh] min-h-[200px] max-h-[260px] self-start border-b border-[#E2E8E4] bg-[#F4F7F4]/95 px-6 shadow-[0_10px_24px_rgb(11,32,22,0.05)] backdrop-blur-md lg:order-2 lg:z-10 lg:mx-0 lg:mb-0 lg:h-[calc(100vh-6.5rem)] lg:max-h-none lg:min-h-0 lg:w-[44%] lg:shrink-0 lg:border-0 lg:bg-transparent lg:px-0 lg:shadow-none lg:backdrop-blur-none lg:top-24"
+            className="sticky top-[4.75rem] z-20 -mx-6 mb-2 h-[36vh] min-h-[230px] max-h-[320px] self-start overflow-hidden border-b border-[#E2E8E4] bg-[#F4F7F4] px-6 lg:order-2 lg:top-[5.5rem] lg:z-10 lg:mx-0 lg:mb-0 lg:h-[calc(100vh-24rem)] lg:max-h-[480px] lg:min-h-[300px] lg:w-[44%] lg:shrink-0 lg:border-0 lg:bg-transparent lg:px-0"
             data-testid="experience-canvas-wrap"
           >
-            <div className="relative h-full">
-              <Mattress3D explodeRef={explodeRef} reducedMotion={reduced} />
-              <div className="pointer-events-none absolute bottom-2 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-white/70 px-3 py-1.5 text-[11px] text-[#4A5D53] backdrop-blur-sm lg:bottom-4 lg:text-xs">
+            <div className="flex h-full flex-col">
+              <div className="relative min-h-0 flex-1">
+                <div className="absolute inset-0">
+                  <Mattress3D explodeRef={explodeRef} reducedMotion={reduced} />
+                </div>
+              </div>
+              <div className="pointer-events-none mx-auto mb-1 mt-1 flex w-fit shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white/70 px-3 py-1.5 text-[11px] text-[#4A5D53] lg:mb-2 lg:text-xs">
                 <MousePointer2 className="h-3.5 w-3.5" />
                 Arrossega per girar · desplaça't per desmuntar
               </div>
             </div>
           </div>
 
-          <ol className="min-w-0 lg:order-1 lg:min-w-0 lg:flex-1 lg:pt-2">
+          <div className="min-w-0 lg:order-1 lg:min-w-0 lg:flex-1 lg:pt-2">
+          <ol>
             {STEPS.map((step, i) => {
               const active = activeStep === i;
               const past = activeStep > i;
@@ -275,7 +291,7 @@ export default function ExperienceSection() {
                   }}
                   data-testid={`experience-step-${step.id}`}
                   data-active={active ? "true" : "false"}
-                  className="relative pb-8 last:pb-0 lg:pb-[16vh]"
+                  className="relative pb-8 lg:pb-[16vh]"
                 >
                   {i < STEPS.length - 1 && (
                     <span
@@ -323,6 +339,9 @@ export default function ExperienceSection() {
               );
             })}
           </ol>
+          {/* Keeps the mattress pinned through step 05, then releases with the section. */}
+          <div className="h-[22vh] lg:h-[42vh]" aria-hidden="true" />
+          </div>
         </div>
       </div>
     </section>

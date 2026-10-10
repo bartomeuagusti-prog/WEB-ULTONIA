@@ -204,8 +204,12 @@ export default function ExperienceSection() {
         const rawTop = getComputedStyle(wrap).top;
         const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
         const stickyTop = rawTop.endsWith("rem") ? parseFloat(rawTop) * rootPx : parseFloat(rawTop) || 0;
+        const nav = document.querySelector("header");
+        const navBottom = nav ? nav.getBoundingClientRect().bottom : 64;
+        const fadeDistance = Math.max(8, stickyTop - navBottom);
         const overflow = stickyTop - wrap.getBoundingClientRect().top;
-        wrap.style.opacity = overflow > 2 ? String(Math.max(0, 1 - overflow / 48)) : "1";
+        // Transparent by the time the panel meets the navbar, so it never shows underneath.
+        wrap.style.opacity = overflow > 1 ? String(Math.max(0, 1 - overflow / fadeDistance)) : "1";
       }
 
       if (active !== activeRef.current) {
@@ -287,7 +291,7 @@ export default function ExperienceSection() {
                   }}
                   data-testid={`experience-step-${step.id}`}
                   data-active={active ? "true" : "false"}
-                  className="relative pb-8 lg:pb-[16vh]"
+                  className={`relative ${i === STEPS.length - 1 ? "pb-0" : "pb-8 lg:pb-[16vh]"}`}
                 >
                   {i < STEPS.length - 1 && (
                     <span
@@ -335,8 +339,8 @@ export default function ExperienceSection() {
               );
             })}
           </ol>
-          {/* Keeps the mattress pinned through step 05, then releases with the section. */}
-          <div className="h-[22vh] lg:h-[42vh]" aria-hidden="true" />
+          {/* Short runway so step 05 can activate while the mattress is still fully on screen. */}
+          <div className="h-8 lg:h-28" aria-hidden="true" />
           </div>
         </div>
       </div>

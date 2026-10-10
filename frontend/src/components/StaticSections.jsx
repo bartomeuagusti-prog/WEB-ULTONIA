@@ -265,13 +265,22 @@ export function Footer({ onContact }) {
               dins l'economia circular.
             </p>
           </div>
-          <Button
-            onClick={onContact}
-            data-testid="footer-cta"
-            className="rounded-full bg-[#A6E08A] text-[#0B2016] hover:bg-[#8BC96F] px-8 py-6 text-base font-medium self-start"
-          >
-            Vols provar?
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-3 self-start">
+            <Button
+              onClick={onContact}
+              data-testid="footer-cta"
+              className="rounded-full bg-[#A6E08A] text-[#0B2016] hover:bg-[#8BC96F] px-8 py-6 text-base font-medium"
+            >
+              Vols provar?
+            </Button>
+            <a
+              href="https://benlligat-v1.vercel.app/"
+              data-testid="footer-login"
+              className="inline-flex items-center justify-center rounded-full border border-white/30 text-white hover:bg-white/10 px-8 py-3 text-base font-medium transition-colors"
+            >
+              Inicia sessió
+            </a>
+          </div>
         </div>
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row justify-between gap-4 text-sm text-white/50">
           <span>© 2026 Benlligat. Tots els drets reservats.</span>

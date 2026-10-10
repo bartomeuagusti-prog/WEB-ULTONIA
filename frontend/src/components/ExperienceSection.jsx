@@ -35,19 +35,9 @@ const STEPS = [
   },
 ];
 
-// Step 01 stays closed. Opening is spread across steps 02–05.
-const STEP_POSE = [0, 0.32, 0.56, 0.8, 1];
-
-function explodeFor(active, local) {
-  if (active <= 0) {
-    if (local < 0.84) return 0;
-    const t = (local - 0.84) / 0.16;
-    return STEP_POSE[1] * t * t;
-  }
-  const from = STEP_POSE[active];
-  const to = active >= STEP_POSE.length - 1 ? 1 : STEP_POSE[active + 1];
-  return from + (to - from) * local;
-}
+// Held for the whole time that step is active. 01 is fully closed.
+// Later steps jump in clearly larger openings; 05 is the maximum.
+const STEP_POSE = [0, 0.25, 0.48, 0.68, 1];
 
 function pad(n) {
   return String(n + 1).padStart(2, "0");
@@ -205,12 +195,18 @@ export default function ExperienceSection() {
         if (node && node.getBoundingClientRect().top <= y + 16) active = i;
       }
 
-      const current = nodes[active].getBoundingClientRect();
-      const nextTop =
-        active < STEPS.length - 1 ? nodes[active + 1].getBoundingClientRect().top : current.top + current.height;
-      const span = Math.max(1, nextTop - current.top);
-      const local = Math.min(1, Math.max(0, (y + 16 - current.top) / span));
-      explodeRef.current = reduced ? STEP_POSE[active] : explodeFor(active, local);
+      explodeRef.current = STEP_POSE[active];
+      const section = document.querySelector('[data-testid="experience-section"]');
+      if (section) section.setAttribute("data-explode", explodeRef.current.toFixed(3));
+
+      const wrap = document.querySelector('[data-testid="experience-canvas-wrap"]');
+      if (wrap) {
+        const rawTop = getComputedStyle(wrap).top;
+        const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+        const stickyTop = rawTop.endsWith("rem") ? parseFloat(rawTop) * rootPx : parseFloat(rawTop) || 0;
+        const overflow = stickyTop - wrap.getBoundingClientRect().top;
+        wrap.style.opacity = overflow > 2 ? String(Math.max(0, 1 - overflow / 48)) : "1";
+      }
 
       if (active !== activeRef.current) {
         activeRef.current = active;
@@ -231,7 +227,7 @@ export default function ExperienceSection() {
       window.removeEventListener("resize", onScroll);
       if (raf) window.cancelAnimationFrame(raf);
     };
-  }, [reduced]);
+  }, []);
 
   const goTo = (index) => {
     const el = stepRefs.current[index];

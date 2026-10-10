@@ -1,5 +1,5 @@
 import React, { useRef, useMemo, Suspense } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   OrbitControls,
   RoundedBox,
@@ -12,7 +12,7 @@ import * as THREE from "three";
 
 const MAT_W = 4.3;
 const MAT_D = 2.7;
-const EXPLODE_K = 1.7;
+const EXPLODE_K = 1.15;
 
 /* ---------- Procedural textures ---------- */
 function makeQuiltTexture() {
@@ -255,25 +255,33 @@ function Layer({ layer, quiltTex, coirTex }) {
   );
 }
 
-function MattressGroup({ explodeRef }) {
+function MattressGroup({ explodeRef, reducedMotion }) {
   const refs = useRef([]);
   const quiltTex = useMemo(() => makeQuiltTexture(), []);
   const coirTex = useMemo(() => makeCoirTexture(), []);
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     const e = explodeRef.current ?? 0;
+    // Time-based so the pose still settles when frames are slow. ~0.1 at 60fps.
+    const blend = reducedMotion ? 1 : 1 - Math.exp(-Math.min(delta, 0.1) / 0.12);
     BOX_LAYERS.forEach((layer, i) => {
       const g = refs.current[i];
       if (!g) return;
       const target = RESTING_Y[i] * (1 + EXPLODE_K * e);
-      g.position.y += (target - g.position.y) * 0.1;
+      g.position.y += (target - g.position.y) * blend;
     });
   });
 
   return (
     <group rotation={[0, -0.15, 0]}>
       {BOX_LAYERS.map((layer, i) => (
-        <group key={layer.key} ref={(el) => (refs.current[i] = el)} position={[0, RESTING_Y[i], 0]}>
+        <group
+          key={layer.key}
+          ref={(el) => {
+            if (el && refs.current[i] !== el) el.position.y = RESTING_Y[i];
+            refs.current[i] = el;
+          }}
+        >
           <Layer layer={layer} quiltTex={quiltTex} coirTex={coirTex} />
         </group>
       ))}
@@ -281,7 +289,57 @@ function MattressGroup({ explodeRef }) {
   );
 }
 
-function Scene({ explodeRef }) {
+function stackExtent(explode) {
+  const scale = 1 + EXPLODE_K * explode;
+  let minY = Infinity;
+  let maxY = -Infinity;
+  RESTING_Y.forEach((y, i) => {
+    const center = y * scale;
+    const half = BOX_LAYERS[i].t / 2;
+    minY = Math.min(minY, center - half);
+    maxY = Math.max(maxY, center + half);
+  });
+  return { minY, maxY };
+}
+
+function FitCamera() {
+  const camera = useThree((state) => state.camera);
+  const size = useThree((state) => state.size);
+  const controls = useThree((state) => state.controls);
+  const fitted = useRef("");
+
+  useFrame(() => {
+    if (!controls) return;
+    const key = `${Math.round(size.width)}x${Math.round(size.height)}`;
+    if (fitted.current === key) return;
+
+    const { minY, maxY } = stackExtent(1);
+    const span = maxY - minY;
+    // Sit the stack slightly above center so the top layers stay clear of the panel edge.
+    const centerY = (minY + maxY) / 2 - span * 0.05;
+    const vFov = (camera.fov * Math.PI) / 180;
+    const aspect = Math.max(0.35, size.width / Math.max(1, size.height));
+    const hFov = 2 * Math.atan(Math.tan(vFov / 2) * aspect);
+    // 0.7 / 0.88 leave padding inside the canvas on both axes.
+    const distV = span / 2 / Math.tan(vFov / 2) / 0.7;
+    const distH = 5.05 / 2 / Math.tan(hFov / 2) / 0.88;
+    const dist = Math.max(distV, distH);
+
+    const offset = camera.position.clone().sub(controls.target);
+    if (offset.lengthSq() < 0.01) offset.set(5.2, 5.2, 8.6);
+    offset.setLength(dist);
+    controls.target.set(0, centerY, 0);
+    camera.position.copy(controls.target).add(offset);
+    camera.lookAt(controls.target);
+    controls.update();
+    fitted.current = key;
+  });
+
+  return null;
+}
+
+function Scene({ explodeRef, reducedMotion }) {
+  const mattress = <MattressGroup explodeRef={explodeRef} reducedMotion={reducedMotion} />;
   return (
     <>
       <ambientLight intensity={0.75} />
@@ -289,9 +347,13 @@ function Scene({ explodeRef }) {
       <directionalLight position={[-7, 5, -5]} intensity={0.4} color="#cfe9c0" />
       <pointLight position={[0, 6, 8]} intensity={0.45} />
 
-      <Float speed={1.0} rotationIntensity={0} floatIntensity={0.3} floatingRange={[0, 0.1]}>
-        <MattressGroup explodeRef={explodeRef} />
-      </Float>
+      {reducedMotion ? (
+        mattress
+      ) : (
+        <Float speed={1.0} rotationIntensity={0} floatIntensity={0.3} floatingRange={[0, 0.1]}>
+          {mattress}
+        </Float>
+      )}
 
       <ContactShadows position={[0, -2.05, 0]} opacity={0.3} scale={14} blur={2.8} far={5} color="#0b2016" />
 
@@ -299,17 +361,18 @@ function Scene({ explodeRef }) {
         enablePan={false}
         enableZoom={false}
         enableRotate
-        autoRotate
+        autoRotate={!reducedMotion}
         autoRotateSpeed={0.8}
         minPolarAngle={Math.PI * 0.28}
         maxPolarAngle={Math.PI * 0.46}
         makeDefault
       />
+      <FitCamera />
     </>
   );
 }
 
-export default function Mattress3D({ explodeRef }) {
+export default function Mattress3D({ explodeRef, reducedMotion = false }) {
   return (
     <Canvas
       className="canvas-grab"
@@ -320,7 +383,7 @@ export default function Mattress3D({ explodeRef }) {
       data-testid="mattress-3d-canvas"
     >
       <Suspense fallback={null}>
-        <Scene explodeRef={explodeRef} />
+        <Scene explodeRef={explodeRef} reducedMotion={reducedMotion} />
       </Suspense>
     </Canvas>
   );

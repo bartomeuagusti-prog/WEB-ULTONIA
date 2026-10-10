@@ -16,8 +16,8 @@ d'administració** per veure les sol·licituds rebudes.
 - URL: **`https://benlligat.com/admin`**
 - Login amb contrasenya. Mostra les sol·licituds del formulari (data, nom, hotel,
   correu, missatge) i permet esborrar-les.
-- Contrasenya actual: **`benlligat2026`** → **es pot canviar** en qualsevol moment
-  editant la variable `ADMIN_PASSWORD` (veure secció 4).
+- Contrasenya: definida a la variable `ADMIN_PASSWORD` del backend (Render). No
+  s'escriu mai en aquest document; es pot canviar editant aquesta variable.
 
 ## 3. Endpoints del backend (prefix `/api`)
 
@@ -37,7 +37,7 @@ Autenticació admin: JWT (Bearer token) signat amb `JWT_SECRET`, caducitat 12 h.
 MONGO_URL="mongodb://..."          # URL de MongoDB (Atlas o servidor propi)
 DB_NAME="benlligat"
 CORS_ORIGINS="https://benlligat.com"   # en producció, millor concret que "*"
-ADMIN_PASSWORD="benlligat2026"     # contrasenya del panell /admin (canviable)
+ADMIN_PASSWORD="<contrasenya-segura>"   # contrasenya del panell /admin (canviable)
 JWT_SECRET="<cadena-llarga-i-aleatoria>"   # posar-ne una de nova en producció
 ```
 

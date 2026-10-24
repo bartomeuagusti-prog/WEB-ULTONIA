@@ -13,6 +13,7 @@ import {
 } from "@/components/StaticSections";
 import { Toaster } from "@/components/ui/sonner";
 import Admin from "@/pages/Admin";
+import Brand from "@/pages/Brand";
 
 function Landing() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -40,6 +41,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/brand" element={<Brand />} />
       </Routes>
       <Toaster position="top-center" richColors />
     </BrowserRouter>

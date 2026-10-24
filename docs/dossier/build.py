@@ -20,7 +20,7 @@ CARDS = [
     ("Què fa Benlligat?", "Dona ", "identitat a cada matalàs", " per fer el seguiment durant tota la seva vida útil.",
      ["Identificador únic en un QR amb GS1 Digital Link.",
       "Passaport: on és, quin model és i en quin estat està, alineat amb els principis del passaport digital europeu."]),
-    ("Com es fa, a peu de llit?", "Un QR obre el passaport i ", "deixa escrita la decisió", ".",
+    ("Com es fa, a peu de llit?", "El ", "passaport digital", " amb tota la informació rellevant de cada unitat.",
      ["Escaneja el QR, obre el passaport, registra inspecció o incidència.",
       "Foto i acció següent: seguir, manteniment o baixa."]),
     ("Què queda registrat?", "L'estat, la incidència i ", "què s'ha de fer després", ".",

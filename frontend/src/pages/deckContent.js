@@ -77,9 +77,9 @@ export const SECTIONS = [
     kicker: "Pregunta 3 de 8",
     question: "Com es fa, a peu de llit?",
     answer: [
-      { t: "Un QR obre el passaport i " },
-      { t: "deixa escrita la decisió", accent: true },
-      { t: "." },
+      { t: "El " },
+      { t: "passaport digital", accent: true },
+      { t: " amb tota la informació rellevant de cada unitat." },
     ],
     sidebar: "notes",
     notes: [

@@ -13,7 +13,6 @@ import {
   INCIDENTS,
   MATERIALS,
   OUTCOMES,
-  PILOT_STEPS,
   PRODUCT_POINTS,
   ROLES,
   SECTIONS,
@@ -730,26 +729,7 @@ export default function Deck() {
             <RevealTiles items={ROLES} testId="deck-role-tiles" columns="lg:grid-cols-3" />
           </Slide>
 
-          <Slide id="09">
-            <QHead kicker={SECTIONS[9].kicker} question={SECTIONS[9].question} answer={SECTIONS[9].answer} />
-            <ol className="mt-10 space-y-3">
-              {PILOT_STEPS.map((step) => (
-                <li key={step.n} className="grid gap-3 rounded-3xl border border-[#E2E8E4] bg-white p-5 sm:grid-cols-[4rem_1fr] sm:items-start">
-                  <span className="font-display text-3xl font-medium tracking-tighter leading-[0.95] text-[#1A5336]">{step.n}</span>
-                  <div>
-                    <h3 className="font-display text-2xl font-medium tracking-tighter leading-[0.95] text-[#0B2016]">{step.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-[#4A5D53]">{step.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <p className="mt-4 text-sm text-[#4A5D53]">
-              Sense preu i sense calendari tancat en aquest dossier.
-              <Mark n={1} />
-            </p>
-          </Slide>
-
-          <Slide id="10" wide>
+          <Slide id="09" wide>
             <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)]">
               <div>
                 <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1A5336]">Gràcies</p>

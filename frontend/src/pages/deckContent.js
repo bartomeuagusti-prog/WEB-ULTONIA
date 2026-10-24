@@ -207,25 +207,6 @@ export const SECTIONS = [
   },
   {
     id: "09",
-    nav: "Pilot",
-    kicker: "Com es comença",
-    question: "Per on comença un centre?",
-    answer: [
-      { t: "Per " },
-      { t: "una planta", accent: true },
-      { t: ", no per tot l'hospital." },
-    ],
-    sidebar: "notes",
-    notes: [
-      {
-        n: 1,
-        pending: true,
-        text: "El pilot és un ordre de treball: registrar, etiquetar, inspeccionar, informar. No és un calendari ni un preu.",
-      },
-    ],
-  },
-  {
-    id: "10",
     nav: "Gràcies",
     sidebar: "next",
     notes: [],

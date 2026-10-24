@@ -50,7 +50,7 @@ export const SECTIONS = [
     answer: [
       { t: "Dona " },
       { t: "identitat a cada matalàs", accent: true },
-      { t: " i el segueix fins a la baixa." },
+      { t: " per fer el seguiment durant tota la seva vida útil." },
     ],
     sidebar: "notes",
     notes: [

@@ -586,13 +586,13 @@ export default function Deck() {
             </p>
           </Slide>
 
-          <Slide id="03" wide>
+          <Slide id="03">
             <QHead kicker={SECTIONS[3].kicker} question={SECTIONS[3].question} answer={SECTIONS[3].answer} />
             <p className="mt-4 max-w-2xl text-sm text-[#4A5D53]">
               Passa el ratolí per damunt d'un pas, o toca'l, per llegir el detall.
               <Mark n={1} />
             </p>
-            <RevealTiles items={FLOW_TILES} testId="deck-flow-tiles" />
+            <RevealTiles items={FLOW_TILES} testId="deck-flow-tiles" columns="" />
           </Slide>
 
           <Slide id="04">

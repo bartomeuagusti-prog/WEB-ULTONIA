@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/brand", "destination": "/index.html" },
+    { "source": "/brand/", "destination": "/index.html" },
+    { "source": "/((?!brand/).*)", "destination": "/index.html" }
+  ]
+}

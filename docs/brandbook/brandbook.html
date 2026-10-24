@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="ca"><head><meta charset="utf-8"><title>Benlligat · Brand Book</title>
+<style>
+@font-face{font-family:'Cabinet Grotesk';src:url('fonts/CabinetGrotesk-400.ttf');font-weight:400}
+@font-face{font-family:'Cabinet Grotesk';src:url('fonts/CabinetGrotesk-500.ttf');font-weight:500}
+@font-face{font-family:'Cabinet Grotesk';src:url('fonts/CabinetGrotesk-700.ttf');font-weight:700}
+@font-face{font-family:'Cabinet Grotesk';src:url('fonts/CabinetGrotesk-800.ttf');font-weight:500}
+@font-face{font-family:'Cabinet Grotesk';src:url('fonts/CabinetGrotesk-900.ttf');font-weight:900}
+@font-face{font-family:'Outfit';src:url('fonts/Outfit.ttf');font-weight:100 900}
+@page{size:297mm 210mm;margin:0}
+:root{--g:#1A5336;--d:#0B2016;--deep:#062A18;--bg:#FAFAFA;--bd:#E2E8E4;--t2:#4A5D53;--t3:#4A5D53;--t4:#4A5D53;--tint:#E6EFE7;--hover:#133D27;--lime:#A6E08A;--limeh:#8BC96F}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:'Outfit',sans-serif;color:var(--d);background:var(--bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:297mm;height:210mm;position:relative;overflow:hidden;background:var(--bg);page-break-after:always;padding:16mm 18mm 20mm}
+.page:last-child{page-break-after:auto}
+.disp{font-family:'Cabinet Grotesk',sans-serif;font-weight:500;letter-spacing:-0.05em;line-height:.95;color:var(--d)}
+.disp .acc{color:var(--g)}
+p b,li b,td b,p strong{color:var(--d);font-weight:500}
+.dark p b{color:#fff}
+.eyebrow{font-size:9pt;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--g)}
+.eyebrow.n{color:var(--t3)}
+.acc{color:var(--g)}
+h1.disp{font-size:44pt}
+h2.disp{font-size:30pt;margin-top:3mm;max-width:210mm}
+h3{font-family:'Cabinet Grotesk';font-weight:500;font-size:14pt;letter-spacing:-.025em;line-height:1.1;color:var(--d)}
+p,li{font-size:10.5pt;line-height:1.6;color:var(--t2)}
+.lead{font-size:12.5pt;color:var(--t4);max-width:200mm;margin-top:4mm;line-height:1.5}
+.small{font-size:9pt;color:var(--t3);line-height:1.5}
+.foot{position:absolute;left:18mm;right:18mm;bottom:9mm;display:flex;justify-content:space-between;align-items:center;font-size:7.5pt;color:var(--t4);border-top:1px solid var(--bd);padding-top:3mm;letter-spacing:.04em}
+.foot b{font-weight:600;color:var(--g)}
+.card{background:#fff;border:1px solid var(--bd);border-radius:6mm;padding:6mm;box-shadow:0 8px 30px rgba(0,0,0,.04)}
+.grid{display:grid;gap:5mm}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+.mt2{margin-top:2mm}.mt3{margin-top:3mm}.mt4{margin-top:4mm}.mt6{margin-top:6mm}.mt8{margin-top:8mm}
+.pill{white-space:nowrap;display:inline-flex;align-items:center;border-radius:999px;background:var(--tint);color:var(--g);font-size:7.5pt;font-weight:600;text-transform:uppercase;letter-spacing:.14em;padding:1.2mm 2.8mm}
+.pill.o{background:#fff;border:1px solid var(--bd);color:var(--d);text-transform:none;letter-spacing:0;font-size:9pt;font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:2mm;border-radius:999px;background:var(--g);color:#fff;font-weight:500;font-size:10.5pt;padding:3mm 6.5mm}
+.btn.h{background:var(--hover)}
+.btn.s{background:rgba(255,255,255,.7);color:var(--d);border:1px solid var(--bd)}
+.btn.l{background:var(--lime);color:var(--d)}
+.btn.f{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--lime)}
+.badge{white-space:nowrap;display:inline-flex;align-items:center;border-radius:999px;background:#E6EFE7;color:var(--g);font-size:9pt;font-weight:500;padding:1mm 4mm}
+.stat{border-left:2px solid var(--g);padding-left:3mm}
+.stat .v{font-family:'Cabinet Grotesk';font-weight:500;font-size:22pt;letter-spacing:-.025em;color:var(--d);line-height:1}
+.stat .l{font-size:8pt;color:var(--t3);margin-top:1mm}
+ul.clean{list-style:none}
+ul.clean li{padding-left:5mm;position:relative;margin-top:1.6mm}
+ul.clean li::before{content:"";position:absolute;left:0;top:2.3mm;width:2mm;height:2mm;border-radius:50%;background:var(--g)}
+ul.no li::before{background:#fff;border:1.5px solid var(--t4)}
+.num{display:inline-grid;place-items:center;width:7mm;height:7mm;border-radius:50%;background:var(--d);color:#fff;font-size:8.5pt;font-weight:600}
+.sw{border-radius:5mm;overflow:hidden;border:1px solid var(--bd);background:#fff}
+.sw .c{height:48mm;padding:5mm;display:flex;flex-direction:column;justify-content:flex-end}
+.sw .i{padding:4mm 5mm;font-size:8.5pt;color:var(--t2);line-height:1.6}
+.sw .i b{font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;color:var(--d);display:block;letter-spacing:-.01em}
+table{border-collapse:collapse;width:100%}
+td,th{font-size:8.5pt;text-align:left;padding:2mm 2.5mm;border-bottom:1px solid var(--bd);color:var(--t2);vertical-align:middle}
+th{font-size:7pt;text-transform:uppercase;letter-spacing:.14em;color:var(--t3);font-weight:600}
+.chip{display:inline-block;width:5mm;height:5mm;border-radius:1.5mm;vertical-align:middle;border:1px solid rgba(6,42,24,.12);margin-right:2mm}
+.ok{color:var(--g);font-weight:600}
+.bad{color:#9B2C2C;font-weight:600}
+.tag{font-size:7pt;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.logo-box{border-radius:5mm;display:grid;place-items:center;border:1px solid var(--bd)}
+.mis{height:34mm;background:#fff;border:1px solid var(--bd);border-radius:4mm;display:grid;place-items:center;overflow:hidden;position:relative}
+.mis img{width:52%}
+.x{display:flex;align-items:center;gap:1.5mm;margin-top:2mm;font-size:8.5pt;color:var(--t2)}
+.x i{font-style:normal;display:inline-grid;place-items:center;width:4.5mm;height:4.5mm;border-radius:50%;background:#9B2C2C;color:#fff;font-size:7pt;font-weight:700}
+.x i.y{background:var(--g)}
+.pending{border:1.5px dashed #A3BAAF;border-radius:5mm;padding:5mm;background:#fff}
+.pending .pill{background:#FFF4E5;color:#7A4B00}
+.rule{height:1px;background:var(--bd);margin:5mm 0}
+</style></head><body>
+
+<!-- 1 COVER -->
+<section class="page" style="background:var(--deep);padding:0">
+  <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 85% 10%, #1A5336 0%, #062A18 60%)"></div>
+  <svg style="position:absolute;right:-40mm;bottom:-50mm;width:210mm;opacity:.10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+  <div style="position:relative;padding:18mm 20mm;height:100%;display:flex;flex-direction:column">
+    <img src="assets/logo-full-reversed.png" style="width:62mm">
+    <div style="margin-top:auto">
+      <p class="eyebrow" style="color:#A6E08A">Brand Book · Versió 1.1 · Octubre 2026</p>
+      <h1 class="disp" style="color:#fff;font-size:64pt;line-height:.95;letter-spacing:-.05em;margin-top:5mm;max-width:230mm">Com es veu, com parla<br><span style="color:#A6E08A">i com s’aplica Benlligat.</span></h1>
+      <p style="color:#E5F2EA;font-size:12.5pt;margin-top:7mm;max-width:170mm;line-height:1.5">Requeriments d’estil de la marca: logotip, color, tipografia, components d’interfície, dades i aplicacions. Basat en els actius oficials i en el codi de la web publicada (branca main), que és la font de veritat.</p>
+    </div>
+    <div style="display:flex;gap:10mm;margin-top:12mm;border-top:1px solid rgba(255,255,255,.18);padding-top:5mm">
+      <div><p class="tag" style="color:#A3BAAF">Color principal</p><p style="color:#fff;font-size:10pt;margin-top:1mm">Order Green #1A5336</p></div>
+      <div><p class="tag" style="color:#A3BAAF">Text</p><p style="color:#fff;font-size:10pt;margin-top:1mm">Ink #0B2016</p></div>
+      <div><p class="tag" style="color:#A3BAAF">Tipografies</p><p style="color:#fff;font-size:10pt;margin-top:1mm">Cabinet Grotesk 500 · Outfit</p></div>
+      <div><p class="tag" style="color:#A3BAAF">Web</p><p style="color:#fff;font-size:10pt;margin-top:1mm">benlligat.com</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 INDEX -->
+<section class="page">
+  <p class="eyebrow">Índex</p>
+  <h2 class="disp">Tot el que cal per <span class="acc">aplicar la marca bé.</span></h2>
+  <div class="grid g3 mt8" style="row-gap:6mm">
+    <div style="display:flex;gap:4mm;align-items:baseline;border-top:1px solid var(--bd);padding-top:3mm"><span class="eyebrow" style="width:8mm">01</span><span style="font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;letter-spacing:-.01em;flex:1">Essència i to de veu</span><span class="small">03</span></div><div style="display:flex;gap:4mm;align-items:baseline;border-top:1px solid var(--bd);padding-top:3mm"><span class="eyebrow" style="width:8mm">02</span><span style="font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;letter-spacing:-.01em;flex:1">Logotip: versions</span><span class="small">04</span></div><div style="display:flex;gap:4mm;align-items:baseline;border-top:1px solid var(--bd);padding-top:3mm"><span class="eyebrow" style="width:8mm">02</span><span style="font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;letter-spacing:-.01em;flex:1">Logotip: protecció, mida i usos incorrectes</span><span class="small">05</span></div><div style="display:flex;gap:4mm;align-items:baseline;border-top:1px solid var(--bd);padding-top:3mm"><span class="eyebrow" style="width:8mm">03</span><span style="font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;letter-spacing:-.01em;flex:1">Color: paleta principal</span><span class="small">06</span></div><div style="display:flex;gap:4mm;align-items:baseline;border-top:1px solid var(--bd);padding-top:3mm"><span class="eyebrow" style="width:8mm">03</span><span style="font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;letter-spacing:-.01em;flex:1">Color: colors de suport</span><span class="small">07</span></div><div style="display:flex;gap:4mm;align-items:baseline;border-top:1px solid var(--bd);padding-top:3mm"><span class="eyebrow" style="width:8mm">03</span><span style="font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;letter-spacing:-.01em;flex:1">Color: tints i contrast</span><span class="small">08</span></div><div style="display:flex;gap:4mm;align-items:baseline;border-top:1px solid var(--bd);padding-top:3mm"><span class="eyebrow" style="width:8mm">04</span><span style="font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;letter-spacing:-.01em;flex:1">Tipografia</span><span class="small">09</span></div><div style="display:flex;gap:4mm;align-items:baseline;border-top:1px solid var(--bd);padding-top:3mm"><span class="eyebrow" style="width:8mm">05</span><span style="font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;letter-spacing:-.01em;flex:1">Components d’interfície</span><span class="small">10</span></div><div style="display:flex;gap:4mm;align-items:baseline;border-top:1px solid var(--bd);padding-top:3mm"><span class="eyebrow" style="width:8mm">05</span><span style="font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;letter-spacing:-.01em;flex:1">Gràfics</span><span class="small">11</span></div><div style="display:flex;gap:4mm;align-items:baseline;border-top:1px solid var(--bd);padding-top:3mm"><span class="eyebrow" style="width:8mm">06</span><span style="font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;letter-spacing:-.01em;flex:1">Imatgeria i iconografia</span><span class="small">12</span></div><div style="display:flex;gap:4mm;align-items:baseline;border-top:1px solid var(--bd);padding-top:3mm"><span class="eyebrow" style="width:8mm">07</span><span style="font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;letter-spacing:-.01em;flex:1">Honestedat de dades</span><span class="small">13</span></div><div style="display:flex;gap:4mm;align-items:baseline;border-top:1px solid var(--bd);padding-top:3mm"><span class="eyebrow" style="width:8mm">08</span><span style="font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;letter-spacing:-.01em;flex:1">Aplicacions</span><span class="small">14</span></div><div style="display:flex;gap:4mm;align-items:baseline;border-top:1px solid var(--bd);padding-top:3mm"><span class="eyebrow" style="width:8mm">09</span><span style="font-family:'Cabinet Grotesk';font-weight:500;font-size:13pt;letter-spacing:-.01em;flex:1">Fitxa ràpida</span><span class="small">15</span></div>
+  </div>
+  <div class="card mt8" style="display:flex;gap:8mm;align-items:center">
+    <p class="eyebrow n" style="white-space:nowrap">Com llegir-lo</p>
+    <p class="small">Les regles marcades com a <b class="ok">obligatòries</b> s’han d’aplicar sempre. Les marcades com a <span class="pill" style="background:#FFF4E5;color:#7A4B00">Pendent de definir</span> encara no estan decidides i porten una recomanació. Els valors de color, tipografia i components surten del codi de la web publicada (WEB-ULTONIA, branca <b>main</b>). Si el manual i la web discrepen, mana la web.</p>
+  </div>
+  <div class="foot"><span><b>Benlligat</b> · Brand Book v1.1</span><span>02</span></div>
+</section>
+
+<!-- 3 ESSENCE -->
+<section class="page">
+  <p class="eyebrow">01 · Essència i to de veu</p>
+  <h2 class="disp">Traçabilitat que es pot <span class="acc">comprovar.</span></h2>
+  <p class="lead">Benlligat és una plataforma B2B per a la gestió circular d’actius físics en hotels i hospitals. El primer actiu és el matalàs: passaport digital de producte, QR amb GS1 Digital Link, inventari, inspeccions, incidències, final de vida i impacte en CO<sub style="font-size:.7em">2</sub>.</p>
+  <div class="grid g3 mt6">
+    <div class="card"><span class="num">1</span><h3 class="mt3">Professional</h3><p class="mt2">Parlem a direcció, manteniment, compres i sostenibilitat. Llenguatge clar, sense exageracions ni argot de màrqueting.</p></div>
+    <div class="card"><span class="num">2</span><h3 class="mt3">Fiable</h3><p class="mt2">Cada afirmació es pot verificar. Si una dada és d’exemple, ho diem. Si una font està pendent, ho diem.</p></div>
+    <div class="card"><span class="num">3</span><h3 class="mt3">Sostenibilitat mesurable</h3><p class="mt2">No “verd” genèric: parlem de materials, pesos, destins i CO<sub style="font-size:.7em">2</sub> calculat, amb el mètode a la vista.</p></div>
+  </div>
+  <div class="grid g2 mt6">
+    <div>
+      <p class="eyebrow">Així sí</p>
+      <ul class="clean mt2">
+        <li>Català directe, frases curtes, verb al davant.</li>
+        <li>Una idea per titular; la frase clau en Order Green.</li>
+        <li>Pregunta → resposta: “Què passa amb el matalàs quan es dona de baixa?”</li>
+        <li>Xifres amb unitat, període i font (o etiqueta “Dades d’exemple”).</li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow n">Així no</p>
+      <ul class="clean no mt2">
+        <li>Superlatius sense prova (“el millor”, “revolucionari”, “100% sostenible”).</li>
+        <li>Xifres sense font o presentades com a resultats reals quan no ho són.</li>
+        <li>Clients, aliances o històries que no estiguin confirmades.</li>
+        <li>Anglicismes evitables quan hi ha terme català (inventari, baixa, incidència).</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span><b>Benlligat</b> · Brand Book v1.1</span><span>03</span></div>
+</section>
+
+<!-- 4 LOGO VERSIONS -->
+<section class="page">
+  <p class="eyebrow">02 · Logotip</p>
+  <h2 class="disp">Un símbol, una fulla, <span class="acc">un nom.</span></h2>
+  <p class="lead" style="font-size:11pt">Quadrat arrodonit verd amb la fulla en traç blanc + mot “Benlligat” en verd fosc. Dues versions: <b>complet</b> (símbol + mot) i <b>només símbol</b> (favicon, avatar, espais petits). Sobre fons foscos o verds s’usa la versió invertida.</p>
+  <div class="grid mt6" style="grid-template-columns:1.25fr 1.25fr 1fr 1fr">
+    <div><div class="logo-box" style="height:60mm;background:#fff"><img src="assets/logo-full.png" style="width:72%"></div><p class="small mt2"><b>Complet · positiu.</b> Fons #FAFAFA o blanc. Versió preferent.</p></div>
+    <div><div class="logo-box" style="height:60mm;background:var(--g);border-color:var(--g)"><img src="assets/logo-full-reversed.png" style="width:72%"></div><p class="small mt2"><b>Complet · invertit.</b> Sobre Order Green: símbol blanc amb fulla verda, mot en blanc.</p></div>
+    <div><div class="logo-box" style="height:60mm;background:#fff"><img src="assets/mark.png" style="width:42%"></div><p class="small mt2"><b>Símbol · positiu.</b></p></div>
+    <div><div class="logo-box" style="height:60mm;background:#0B2016;border-color:#0B2016"><img src="assets/mark-reversed.png" style="width:42%"></div><p class="small mt2"><b>Símbol · invertit.</b> Sobre Ink #0B2016.</p></div>
+  </div>
+  <div class="grid g2 mt6">
+    <div class="card" style="padding:5mm">
+      <p class="eyebrow n">Construcció observada</p>
+      <p class="small mt2">Radi del quadrat aprox. 33% del costat. A la web: contenidor de 36 px, radi 12 px, fulla Lucide de 20 px; mot en Cabinet Grotesk 500, 20 px, tracking −0,025 em, #0B2016. Al peu (fons #0B2016) el quadrat és llima #A6E08A amb la fulla en #0B2016.</p>
+    </div>
+    <div class="card" style="padding:5mm">
+      <p class="eyebrow n">Fitxers</p>
+      <p class="small mt2">Original oficial: <b>logo-benlligat.png</b>. Generades per a aquest manual: invertida i només símbol. <span class="pill" style="background:#FFF4E5;color:#7A4B00">Pendent</span> Vectoritzar en SVG oficial i substituir la icona aproximada de la web (Lucide “Leaf” + text).</p>
+    </div>
+  </div>
+  <div class="foot"><span><b>Benlligat</b> · Brand Book v1.1</span><span>04</span></div>
+</section>
+
+<!-- 5 LOGO RULES -->
+<section class="page">
+  <p class="eyebrow">02 · Logotip</p>
+  <h2 class="disp" style="font-size:26pt">Espai de protecció, mida mínima <span class="acc">i usos incorrectes.</span></h2>
+  <div class="grid mt6" style="grid-template-columns:1.1fr 0.9fr;gap:8mm">
+    <div>
+      <div class="card" style="padding:0;height:52mm;display:grid;place-items:center;background:#fff">
+        <div style="position:relative;padding:9mm;border:1px dashed #A3BAAF">
+          <img src="assets/logo-full.png" style="width:80mm;display:block">
+          <span style="position:absolute;left:0;top:0;width:9mm;height:9mm;background:rgba(26,83,54,.14);display:grid;place-items:center;font-size:8pt;color:var(--g);font-weight:700">x</span>
+          <span style="position:absolute;right:0;bottom:0;width:9mm;height:9mm;background:rgba(26,83,54,.14);display:grid;place-items:center;font-size:8pt;color:var(--g);font-weight:700">x</span>
+        </div>
+      </div>
+      <p class="small mt2"><b>Espai de protecció:</b> x = ¼ del costat del símbol, a tots quatre costats. Cap text, vora ni imatge dins d’aquesta zona.</p>
+    </div>
+    <div>
+      <table>
+        <tr><th>Versió</th><th>Digital</th><th>Imprès</th></tr>
+        <tr><td>Complet</td><td>120 px d’amplada</td><td>30 mm d’amplada</td></tr>
+        <tr><td>Només símbol</td><td>24 px (favicon 32 px)</td><td>8 mm</td></tr>
+        <tr><td>Capçalera web</td><td>símbol 36 px</td><td>—</td></tr>
+      </table>
+      <p class="small mt3">Per sota d’aquestes mides, usa només el símbol. Mides mínimes recomanades per aquest manual.</p>
+    </div>
+  </div>
+  <p class="eyebrow n mt6">No ho facis</p>
+  <div class="grid g5 mt2">
+    <div><div class="mis"><img src="assets/logo-full.png" style="filter:hue-rotate(150deg) saturate(2)"></div><p class="x"><i>×</i>Canviar-ne el color</p></div>
+    <div><div class="mis"><img src="assets/logo-full.png" style="transform:scaleX(1.45) scaleY(.8)"></div><p class="x"><i>×</i>Estirar o deformar</p></div>
+    <div><div class="mis"><img src="assets/logo-full.png" style="transform:rotate(-14deg)"></div><p class="x"><i>×</i>Girar-lo</p></div>
+    <div><div class="mis"><img src="assets/logo-full.png" style="filter:drop-shadow(2mm 2mm 1.5mm rgba(0,0,0,.45)) drop-shadow(0 0 3mm #9be36d)"></div><p class="x"><i>×</i>Afegir ombres o efectes</p></div>
+    <div><div class="mis" style="background:repeating-linear-gradient(35deg,#c9a46b 0 4mm,#6b8fb5 4mm 8mm,#e8d9b0 8mm 11mm,#3c5a3c 11mm 15mm)"><img src="assets/logo-full.png"></div><p class="x"><i>×</i>Fons amb massa soroll</p></div>
+  </div>
+  <div class="foot"><span><b>Benlligat</b> · Brand Book v1.1</span><span>05</span></div>
+</section>
+
+<!-- 6 COLOUR -->
+<section class="page">
+  <p class="eyebrow">03 · Color</p>
+  <h2 class="disp">Un verd, un fosc i molt d’aire. <span class="acc">El verd assenyala.</span></h2>
+  <div class="grid mt6" style="grid-template-columns:1fr 1fr 1fr 0.8fr">
+    <div class="sw"><div class="c" style="background:#1A5336"><span class="tag" style="color:#fff">Primari · accent</span></div><div class="i"><b>Order Green</b>HEX #1A5336<br>RGB 26 · 83 · 54<br>CMYK aprox. 69 · 0 · 35 · 67<br><span class="small">Frase clau del titular, badges, icones, botons CTA, dada destacada.</span></div></div>
+    <div class="sw"><div class="c" style="background:#0B2016"><span class="tag" style="color:#fff">Text · seccions fosques</span></div><div class="i"><b>Ink</b>HEX #0B2016<br>RGB 11 · 32 · 22<br>CMYK aprox. 66 · 0 · 31 · 87<br><span class="small">Titulars, text fort, dades, peu i seccions fosques de la web.</span></div></div>
+    <div class="sw"><div class="c" style="background:#FAFAFA;border-bottom:1px solid var(--bd)"><span class="tag" style="color:var(--t3)">Fons de pàgina</span></div><div class="i"><b>Background</b>HEX #FAFAFA<br>RGB 250 · 250 · 250<br>CMYK aprox. 0 · 0 · 0 · 2<br><span class="small">Fons general de web, deck i documents.</span></div></div>
+    <div class="sw"><div class="c" style="background:#fff;border-bottom:1px solid var(--bd)"><span class="tag" style="color:var(--t3)">Targetes</span></div><div class="i"><b>White</b>HEX #FFFFFF<br>Vora #E2E8E4 · 1 px<br><span class="small">Targetes i panells sobre #FAFAFA.</span></div></div>
+  </div>
+  <p class="eyebrow n mt6">Proporció d’ús recomanada</p>
+  <div style="display:flex;height:11mm;border-radius:999px;overflow:hidden;border:1px solid var(--bd);margin-top:2mm">
+    <div style="flex:60;background:#FAFAFA;display:flex;align-items:center;padding-left:4mm;font-size:8pt;color:var(--t3)">#FAFAFA · 60%</div>
+    <div style="flex:20;background:#fff;border-left:1px solid var(--bd);display:flex;align-items:center;padding-left:3mm;font-size:8pt;color:var(--t3)">Blanc · 20%</div>
+    <div style="flex:12;background:#0B2016;display:flex;align-items:center;padding-left:3mm;font-size:8pt;color:#fff">#0B2016 · 12%</div>
+    <div style="flex:8;background:#1A5336;display:flex;align-items:center;padding-left:2mm;font-size:8pt;color:#fff">#1A5336 · 8%</div>
+  </div>
+  <p class="small mt2">L’Order Green funciona perquè és escàs: marca el que importa. El text i les seccions fosques de la web usen #0B2016. CMYK aproximat per conversió directa; valida-ho amb la impremta (o defineix un Pantone) abans d’imprimir. Colors de suport a la pàgina següent.</p>
+  <div class="foot"><span><b>Benlligat</b> · Brand Book v1.1</span><span>06</span></div>
+</section>
+
+<!-- 6b SUPPORT -->
+<section class="page">
+  <p class="eyebrow">03 · Color</p>
+  <h2 class="disp" style="font-size:26pt">Colors de suport: <span class="acc">els que la web ja fa servir.</span></h2>
+  <p class="lead" style="font-size:10.5pt">Oficials a partir d’aquesta versió. Verificats al codi de la web publicada (index.css, Hero, Navbar, StaticSections, ExperienceSection). Ràtios de contrast WCAG 2.1 calculats.</p>
+  <div class="grid g5 mt4" style="gap:4mm"><div class="sw"><div class="c" style="height:30mm;background:#0B2016"><span class="tag" style="color:#fff">Ink</span></div><div class="i" style="padding:3mm 4mm"><b>#0B2016</b>RGB 11 · 32 · 22<br>CMYK aprox. 66 · 0 · 31 · 87<p class="small" style="margin-top:1.5mm;min-height:20mm">Text principal, titulars, èmfasi (Outfit 500) i fons de les seccions fosques i del peu.</p><div style="border-top:1px solid var(--bd);padding-top:1.2mm;margin-top:1.2mm;line-height:1.35"><span style="font-size:7pt">sobre #FAFAFA</span><br><b style="font-size:9.5pt">16,33:1</b> <span style="font-size:7.5pt" class="ok">AAA</span></div><div style="border-top:1px solid var(--bd);padding-top:1.2mm;margin-top:1.2mm;line-height:1.35"><span style="font-size:7pt">blanc a sobre</span><br><b style="font-size:9.5pt">17,04:1</b> <span style="font-size:7.5pt" class="ok">AAA</span></div></div></div><div class="sw"><div class="c" style="height:30mm;background:#4A5D53"><span class="tag" style="color:#fff">Text secundari</span></div><div class="i" style="padding:3mm 4mm"><b>#4A5D53</b>RGB 74 · 93 · 83<br>CMYK aprox. 20 · 0 · 11 · 64<p class="small" style="margin-top:1.5mm;min-height:20mm">Paràgrafs, entradetes, enllaços del menú, etiquetes de xifres.</p><div style="border-top:1px solid var(--bd);padding-top:1.2mm;margin-top:1.2mm;line-height:1.35"><span style="font-size:7pt">sobre #FAFAFA</span><br><b style="font-size:9.5pt">6,75:1</b> <span style="font-size:7.5pt" class="ok">AA</span></div><div style="border-top:1px solid var(--bd);padding-top:1.2mm;margin-top:1.2mm;line-height:1.35"><span style="font-size:7pt">sobre blanc</span><br><b style="font-size:9.5pt">7,04:1</b> <span style="font-size:7.5pt" class="ok">AAA</span></div></div></div><div class="sw"><div class="c" style="height:30mm;background:#E2E8E4"><span class="tag" style="color:#0B2016">Vora</span></div><div class="i" style="padding:3mm 4mm"><b>#E2E8E4</b>RGB 226 · 232 · 228<br>CMYK aprox. 3 · 0 · 2 · 9<p class="small" style="margin-top:1.5mm;min-height:20mm">Vores d’1 px de targetes, botó secundari i separadors. No és color de text.</p><div style="border-top:1px solid var(--bd);padding-top:1.2mm;margin-top:1.2mm;line-height:1.35"><span style="font-size:7pt">sobre blanc</span><br><b style="font-size:9.5pt">1,24:1</b> <span style="font-size:7.5pt" class="">només decoratiu</span></div></div></div><div class="sw"><div class="c" style="height:30mm;background:#133D27"><span class="tag" style="color:#fff">Hover</span></div><div class="i" style="padding:3mm 4mm"><b>#133D27</b>RGB 19 · 61 · 39<br>CMYK aprox. 69 · 0 · 36 · 76<p class="small" style="margin-top:1.5mm;min-height:20mm">Botó primari en hover. Mateix ús que Order Green, un pas més fosc.</p><div style="border-top:1px solid var(--bd);padding-top:1.2mm;margin-top:1.2mm;line-height:1.35"><span style="font-size:7pt">text blanc</span><br><b style="font-size:9.5pt">12,18:1</b> <span style="font-size:7.5pt" class="ok">AAA</span></div></div></div><div class="sw"><div class="c" style="height:30mm;background:#A6E08A"><span class="tag" style="color:#0B2016">Llima</span></div><div class="i" style="padding:3mm 4mm"><b>#A6E08A</b>RGB 166 · 224 · 138<br>CMYK aprox. 26 · 0 · 38 · 12<p class="small" style="margin-top:1.5mm;min-height:20mm">Accent sobre fons foscos: botó del peu, icones, badge fosc, selecció de text, anell de focus.</p><div style="border-top:1px solid var(--bd);padding-top:1.2mm;margin-top:1.2mm;line-height:1.35"><span style="font-size:7pt">text #0B2016</span><br><b style="font-size:9.5pt">11,08:1</b> <span style="font-size:7.5pt" class="ok">AAA</span></div><div style="border-top:1px solid var(--bd);padding-top:1.2mm;margin-top:1.2mm;line-height:1.35"><span style="font-size:7pt">sobre Order Green</span><br><b style="font-size:9.5pt">5,85:1</b> <span style="font-size:7.5pt" class="ok">AA</span></div></div></div></div><p class="small mt3">Derivats a la web: <b>#E6EFE7</b> fons del badge (Order Green sobre aquest fons 7,65:1, AAA) i <b>#8BC96F</b> hover del botó llima (#0B2016 a sobre 8,67:1).</p>
+  <div class="card mt4" style="padding:4mm 5mm;display:flex;gap:5mm;align-items:center">
+    <span style="display:inline-block;width:14mm;height:10mm;border-radius:2mm;background:#062A18;flex:none"></span>
+    <p class="small"><b>Deep Green #062A18</b> (RGB 6 · 42 · 24) · <b>no s’usa a la web publicada</b>; només al deck. Es manté únicament per a <b>superfícies fosques</b> del deck i d’impresos (com la portada d’aquest manual). Mai com a color de text: a la web, el text i els fons foscos són #0B2016.</p>
+  </div>
+  <div class="foot"><span><b>Benlligat</b> · Brand Book v1.1</span><span>07</span></div>
+</section>
+
+<!-- 7 TINTS & CONTRAST -->
+<section class="page">
+  <p class="eyebrow">03 · Color</p>
+  <h2 class="disp" style="font-size:26pt">Tints aprovats i <span class="acc">parelles de contrast.</span></h2>
+  <div class="grid mt6" style="grid-template-columns:1fr 1fr;gap:8mm">
+    <div>
+      <p class="eyebrow n">Tints d’Order Green (barreja amb blanc)</p>
+      <div class="grid mt2" style="grid-template-columns:repeat(7,1fr);gap:1.5mm">
+        <div><div style="height:22mm;border-radius:3mm;background:#1A5336;border:1px solid rgba(6,42,24,.08);display:flex;align-items:flex-end;padding:1.5mm;font-size:7pt;font-weight:600;color:#fff">100%</div><p style="font-size:7pt;margin-top:1mm;color:var(--t3)">#1A5336</p></div><div><div style="height:22mm;border-radius:3mm;background:#48755E;border:1px solid rgba(6,42,24,.08);display:flex;align-items:flex-end;padding:1.5mm;font-size:7pt;font-weight:600;color:#fff">80%</div><p style="font-size:7pt;margin-top:1mm;color:var(--t3)">#48755E</p></div><div><div style="height:22mm;border-radius:3mm;background:#769886;border:1px solid rgba(6,42,24,.08);display:flex;align-items:flex-end;padding:1.5mm;font-size:7pt;font-weight:600;color:#062A18">60%</div><p style="font-size:7pt;margin-top:1mm;color:var(--t3)">#769886</p></div><div><div style="height:22mm;border-radius:3mm;background:#A3BAAF;border:1px solid rgba(6,42,24,.08);display:flex;align-items:flex-end;padding:1.5mm;font-size:7pt;font-weight:600;color:#062A18">40%</div><p style="font-size:7pt;margin-top:1mm;color:var(--t3)">#A3BAAF</p></div><div><div style="height:22mm;border-radius:3mm;background:#D1DDD7;border:1px solid rgba(6,42,24,.08);display:flex;align-items:flex-end;padding:1.5mm;font-size:7pt;font-weight:600;color:#062A18">20%</div><p style="font-size:7pt;margin-top:1mm;color:var(--t3)">#D1DDD7</p></div><div><div style="height:22mm;border-radius:3mm;background:#E8EEEB;border:1px solid rgba(6,42,24,.08);display:flex;align-items:flex-end;padding:1.5mm;font-size:7pt;font-weight:600;color:#062A18">10%</div><p style="font-size:7pt;margin-top:1mm;color:var(--t3)">#E8EEEB</p></div><div><div style="height:22mm;border-radius:3mm;background:#F4F6F5;border:1px solid rgba(6,42,24,.08);display:flex;align-items:flex-end;padding:1.5mm;font-size:7pt;font-weight:600;color:#062A18">5%</div><p style="font-size:7pt;margin-top:1mm;color:var(--t3)">#F4F6F5</p></div>
+      </div>
+      <p class="eyebrow n mt6">Altres tons observats (no són colors de marca)</p>
+      <table class="mt2">
+        <tr><th>Tons</th><th>On</th><th>Regla</th></tr>
+        <tr><td style="white-space:nowrap"><span class="chip" style="background:#ECF4EC"></span>#ECF4EC · #F3F5F4</td><td>Degradat del hero</td><td>Només degradat subtil sobre #FAFAFA</td></tr>
+        <tr><td style="white-space:nowrap"><span class="chip" style="background:#D5E2DA"></span>#F4F7F4 · #D5E2DA</td><td>Matalàs 3D</td><td>Fons i línies de l’escena</td></tr>
+        <tr><td style="white-space:nowrap"><span class="chip" style="background:#E5F2EA"></span>#E5F2EA · #E7EFEA</td><td>Deck</td><td>Equivalents a #E6EFE7: unificar-hi</td></tr>
+      </table>
+    </div>
+    <div>
+      <p class="eyebrow n">Contrast WCAG 2.1 (calculat)</p>
+      <table class="mt2">
+        <tr><th>Text / fons</th><th>Mostra</th><th>Ràtio</th><th>Nivell</th></tr>
+        <tr><td>Blanc / Order Green</td><td><span style="display:inline-block;background:#1A5336;color:#FFFFFF;border:1px solid var(--bd);border-radius:999px;padding:.6mm 3mm;font-weight:600;font-size:8pt">Aa Benlligat</span></td><td><b>9.00:1</b></td><td class="ok">AAA</td></tr><tr><td>Ink / Fons</td><td><span style="display:inline-block;background:#FAFAFA;color:#0B2016;border:1px solid var(--bd);border-radius:999px;padding:.6mm 3mm;font-weight:600;font-size:8pt">Aa Benlligat</span></td><td><b>16.33:1</b></td><td class="ok">AAA</td></tr><tr><td>Order Green / Fons</td><td><span style="display:inline-block;background:#FAFAFA;color:#1A5336;border:1px solid var(--bd);border-radius:999px;padding:.6mm 3mm;font-weight:600;font-size:8pt">Aa Benlligat</span></td><td><b>8.62:1</b></td><td class="ok">AAA</td></tr><tr><td>Text secundari / Fons</td><td><span style="display:inline-block;background:#FAFAFA;color:#4A5D53;border:1px solid var(--bd);border-radius:999px;padding:.6mm 3mm;font-weight:600;font-size:8pt">Aa Benlligat</span></td><td><b>6.75:1</b></td><td class="ok">AA</td></tr><tr><td>Order Green / Badge</td><td><span style="display:inline-block;background:#E6EFE7;color:#1A5336;border:1px solid var(--bd);border-radius:999px;padding:.6mm 3mm;font-weight:600;font-size:8pt">Aa Benlligat</span></td><td><b>7.65:1</b></td><td class="ok">AAA</td></tr><tr><td>Blanc / Ink</td><td><span style="display:inline-block;background:#0B2016;color:#FFFFFF;border:1px solid var(--bd);border-radius:999px;padding:.6mm 3mm;font-weight:600;font-size:8pt">Aa Benlligat</span></td><td><b>17.04:1</b></td><td class="ok">AAA</td></tr><tr><td>Llima / Ink</td><td><span style="display:inline-block;background:#0B2016;color:#A6E08A;border:1px solid var(--bd);border-radius:999px;padding:.6mm 3mm;font-weight:600;font-size:8pt">Aa Benlligat</span></td><td><b>11.08:1</b></td><td class="ok">AAA</td></tr><tr><td>Blanc / Hover</td><td><span style="display:inline-block;background:#133D27;color:#FFFFFF;border:1px solid var(--bd);border-radius:999px;padding:.6mm 3mm;font-weight:600;font-size:8pt">Aa Benlligat</span></td><td><b>12.18:1</b></td><td class="ok">AAA</td></tr><tr><td>Order Green / Ink</td><td><span style="display:inline-block;background:#0B2016;color:#1A5336;border:1px solid var(--bd);border-radius:999px;padding:.6mm 3mm;font-weight:600;font-size:8pt">Aa Benlligat</span></td><td><b>1.89:1</b></td><td class="bad">No apte</td></tr>
+      </table>
+      <p class="small mt3">AA demana 4,5:1 per a text normal i 3:1 per a text gran (des de 24 px, o 18,7 px en negreta). AAA demana 7:1. <b class="bad">No</b> combinis Order Green amb #0B2016 per a text (1,89:1): sobre fons fosc, l’accent és el llima #A6E08A.</p>
+    </div>
+  </div>
+  <div class="foot"><span><b>Benlligat</b> · Brand Book v1.1</span><span>08</span></div>
+</section>
+
+<!-- 8 TYPE -->
+<section class="page">
+  <p class="eyebrow">04 · Tipografia</p>
+  <h2 class="disp" style="font-size:26pt">Cabinet Grotesk per cridar. <span class="acc">Outfit per explicar.</span></h2>
+  <div class="grid g2 mt4" style="gap:6mm">
+    <div class="card" style="padding:5mm 6mm">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><p class="eyebrow">Display · titulars</p><p class="small">Fontshare · gratuïta</p></div>
+      <p class="disp" style="font-size:44pt;margin-top:2mm">Aa Bb 128</p>
+      <p style="font-family:'Cabinet Grotesk';font-size:11pt;color:var(--d);margin-top:2mm;letter-spacing:-.01em"><span style="font-weight:500;color:var(--g)">Medium 500 · en ús</span> · <span style="font-weight:700">Bold 700</span> · <span style="font-weight:800">Extrabold 800</span> · <span style="font-weight:900">Black 900</span></p>
+      <p class="small mt2">La web carrega 500/700/800/900 i <b>font-display</b> no fixa pes, així que tots els titulars, xifres i el mot del logo es veuen en <b>500</b>. Fes servir 500; la resta de pesos no estan en ús.</p>
+    </div>
+    <div class="card" style="padding:5mm 6mm">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><p class="eyebrow">Text · interfície</p><p class="small">Google Fonts · gratuïta</p></div>
+      <p style="font-family:'Outfit';font-weight:400;font-size:44pt;margin-top:2mm;line-height:.95;letter-spacing:-.02em;color:var(--d)">Aa Bb 128</p>
+      <p style="font-family:'Outfit';font-size:11pt;color:var(--d);margin-top:2mm"><span style="font-weight:300">Light 300</span> · <span style="font-weight:400">Regular 400</span> · <span style="font-weight:500">Medium 500</span> · <span style="font-weight:600">Semibold 600</span> · <span style="font-weight:700">Bold 700</span></p>
+      <p class="small mt2">Cos de text en #4A5D53; èmfasi i dades en <b>Outfit 500 #0B2016</b>. Botons, navegació i badges en 500. Alternativa de sistema: -apple-system, Segoe UI, sans-serif.</p>
+    </div>
+  </div>
+  <p class="eyebrow n mt4">Jerarquia (valors de la web publicada)</p>
+  <table class="mt2">
+    <tr><th style="width:24mm">Nivell</th><th>Mostra</th><th style="width:92mm">Especificació</th></tr>
+    <tr><td>Badge</td><td><span class="badge">Passaport digital obligatori</span></td><td>Outfit 500 · 12 px · caixa normal · píndola #E6EFE7, text #1A5336, 4 × 16 px</td></tr>
+    <tr><td>Etiqueta</td><td><span class="eyebrow">Pas 01 · Identitat</span></td><td>Outfit 500 · 12 px · MAJÚSCULES · tracking 0,14 em · #1A5336</td></tr>
+    <tr><td>H1 hero</td><td><span class="disp" style="font-size:19pt">El cicle de vida dels teus matalassos,<span class="acc"> sota control.</span></span></td><td>Cabinet 500 · 48 / 60 / 72 px · interlínia 0,95 · tracking −0,05 em · #0B2016; frase clau #1A5336</td></tr>
+    <tr><td>H2 secció</td><td><span class="disp" style="font-size:17pt;letter-spacing:-.025em;line-height:1.25">Cada matalàs, una identitat verificable.</span></td><td>Cabinet 500 · 36 / 48 px · interlínia 1,25 · tracking −0,025 em · #0B2016</td></tr>
+    <tr><td>H3 targeta</td><td><h3 style="letter-spacing:-.025em">Petjada de carboni</h3></td><td>Cabinet 500 · 18–30 px · tracking −0,025 em · #0B2016</td></tr>
+    <tr><td>Cos</td><td><span style="font-size:10.5pt;color:#4A5D53">Identitat, inspecció i final de vida <b>en una sola fitxa</b>.</span></td><td>Outfit 400 · 18–20 px (entradeta) / 14 px (targeta) · interlínia 1,625 · #4A5D53; èmfasi 500 #0B2016</td></tr>
+  </table>
+  <div class="foot"><span><b>Benlligat</b> · Brand Book v1.1</span><span>09</span></div>
+</section>
+
+<!-- 9 UI COMPONENTS -->
+<section class="page">
+  <p class="eyebrow">05 · Components d’interfície</p>
+  <h2 class="disp" style="font-size:26pt">Arrodonit, net i <span class="acc">amb vores fines.</span></h2>
+  <div class="grid mt6" style="grid-template-columns:1fr 1fr 1fr;gap:8mm">
+    <div>
+      <p class="eyebrow n">Botons · sempre rounded-full</p>
+      <div style="display:flex;flex-wrap:wrap;gap:3mm;margin-top:3mm"><span class="btn">Vols provar?</span><span class="btn h">Hover</span><span class="btn s">Demanar demo</span><span class="btn l">Llima</span><span class="btn f">Focus</span></div>
+      <table class="mt3">
+        <tr><td><b>Primari</b></td><td>#1A5336, text blanc, Outfit 500; hover #133D27</td></tr>
+        <tr><td><b>Mides</b></td><td>Hero: 16 px, 32 px laterals, aprox. 48 px d’alt, ombra suau, s’eleva 2 px en hover. Menú: 14 px, 24 px laterals, 36 px d’alt</td></tr>
+        <tr><td><b>Secundari</b></td><td>Blanc 70% + desenfocament, vora #E2E8E4, text #0B2016</td></tr>
+        <tr><td><b>Llima</b></td><td>Sobre #0B2016: fons #A6E08A, text #0B2016, hover #8BC96F</td></tr>
+        <tr><td><b>Focus</b></td><td>Anell llima #A6E08A (2 px amb separació)</td></tr>
+      </table>
+    </div>
+    <div>
+      <p class="eyebrow n">Targeta</p>
+      <div class="card mt2" style="padding:5mm;border-radius:6mm">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A5336" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <h3 class="mt3">Inspecció</h3>
+        <p class="small mt2">Estat, data i responsable queden a la fitxa del matalàs.</p>
+      </div>
+      <p class="small mt3">Blanc, vora 1 px #E2E8E4, radi 24 px (rounded-3xl), farciment 28–32 px, ombra 0 8px 30px rgba(0,0,0,.04); en hover puja 4 px. Variants: destacada en #1A5336 amb icona llima; sobre #0B2016, blanc 4% amb vora blanc 10%. Radi base 16 px; icones en quadrat de 12–16 px de radi.</p>
+      <p class="eyebrow n mt4">Badge i etiqueta</p>
+      <div style="display:flex;gap:3mm;align-items:center;margin-top:2mm"><span class="badge">Model Freemium</span><span class="eyebrow" style="font-size:8pt">Pas 02</span></div>
+      <p class="small mt2">El badge va sempre damunt del titular. Sobre fons fosc: blanc 10%, vora blanc 15%, text llima.</p>
+    </div>
+    <div>
+      <p class="eyebrow n">Xifres</p>
+      <div class="card mt2" style="padding:5mm">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:2mm"><span class="eyebrow" style="font-size:7.5pt">Inventari</span><span class="pill">Dades d’exemple</span></div>
+        <div class="grid g3 mt4" style="gap:3mm">
+          <div><div class="disp" style="font-size:24pt;letter-spacing:-.025em;color:var(--g)">96</div><div class="small">en servei</div></div>
+          <div><div class="disp" style="font-size:24pt;letter-spacing:-.025em;color:var(--g)">22</div><div class="small">en revisió</div></div>
+          <div><div class="disp" style="font-size:24pt;letter-spacing:-.025em;color:var(--g)">10</div><div class="small">de baixa</div></div>
+        </div>
+        <div class="grid g3 mt4" style="gap:2mm;border-top:1px solid var(--bd);padding-top:3mm">
+          <div class="stat"><div class="v" style="font-size:18pt">96</div><div class="l">En servei</div></div>
+          <div class="stat"><div class="v" style="font-size:18pt">22</div><div class="l">En revisió</div></div>
+          <div class="stat"><div class="v" style="font-size:18pt">10</div><div class="l">De baixa</div></div>
+        </div>
+      </div>
+      <p class="small mt3"><b>Web</b> (a dalt): Cabinet 500, 24–30 px, tracking −0,025 em, #1A5336, etiqueta Outfit 12–14 px #4A5D53. <b>Deck</b> (a sota): xifra en #0B2016 amb filet de 2 px #1A5336. Xifres d’exemple, no dades reals.</p>
+    </div>
+  </div>
+  <p class="eyebrow n mt6">Variants de targeta a la web</p>
+  <div class="grid g3 mt2" style="gap:8mm">
+    <div class="card" style="padding:5mm;display:flex;gap:4mm;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A5336" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg><div><h3 style="font-size:11pt">Estàndard</h3><p class="small">Blanc · vora #E2E8E4 · text #4A5D53</p></div></div>
+    <div style="border-radius:6mm;padding:5mm;background:#1A5336;box-shadow:0 8px 32px rgba(0,0,0,.08);display:flex;gap:4mm;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A6E08A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg><div><h3 style="font-size:11pt;color:#fff">Destacada</h3><p class="small" style="color:rgba(255,255,255,.75)">Order Green · icona llima · text blanc 75%</p></div></div>
+    <div style="border-radius:6mm;padding:3mm;background:#0B2016"><div style="border-radius:5mm;padding:3mm 4mm;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);display:flex;gap:4mm;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A6E08A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg><div><h3 style="font-size:11pt;color:#fff">Secció fosca</h3><p class="small" style="color:rgba(255,255,255,.7)">Fons #0B2016 · blanc 4% · vora blanc 10%</p></div></div></div>
+  </div>
+  <div class="foot"><span><b>Benlligat</b> · Brand Book v1.1</span><span>10</span></div>
+</section>
+
+<!-- 10 CHARTS -->
+<section class="page">
+  <p class="eyebrow">05 · Gràfics</p>
+  <h2 class="disp" style="font-size:26pt">Una sola dada en verd. <span class="acc">La resta, en fosc.</span></h2>
+  <div class="grid mt6" style="grid-template-columns:1.3fr 1fr;gap:8mm">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center"><span class="eyebrow">Destí del material · exemple</span><span class="pill">Dades d’exemple</span></div>
+      <div style="margin-top:7mm;display:grid;gap:7mm"><div style="display:grid;grid-template-columns:38mm 1fr 14mm;align-items:center;gap:3mm"><div><div style="font-weight:500;font-size:10.5pt">Reutilitzar</div><div style="font-size:7.5pt;color:var(--t4)">Neteja i torna al servei</div></div><div style="height:9mm;border-radius:999px;background:#E6EFE7;overflow:hidden"><div style="height:100%;width:38%;border-radius:999px;background:#0B2016"></div></div><div class="disp" style="font-size:20pt;color:#0B2016;text-align:right">38%</div></div><div style="display:grid;grid-template-columns:38mm 1fr 14mm;align-items:center;gap:3mm"><div><div style="font-weight:500;font-size:10.5pt">Renovar</div><div style="font-size:7.5pt;color:var(--t4)">Canvi de funda o capes</div></div><div style="height:9mm;border-radius:999px;background:#E6EFE7;overflow:hidden"><div style="height:100%;width:24%;border-radius:999px;background:#0B2016"></div></div><div class="disp" style="font-size:20pt;color:#0B2016;text-align:right">24%</div></div><div style="display:grid;grid-template-columns:38mm 1fr 14mm;align-items:center;gap:3mm"><div><div style="font-weight:500;font-size:10.5pt">Reciclar</div><div style="font-size:7.5pt;color:var(--t4)">Separació per materials</div></div><div style="height:9mm;border-radius:999px;background:#E6EFE7;overflow:hidden"><div style="height:100%;width:30%;border-radius:999px;background:#0B2016"></div></div><div class="disp" style="font-size:20pt;color:#0B2016;text-align:right">30%</div></div><div style="display:grid;grid-template-columns:38mm 1fr 14mm;align-items:center;gap:3mm"><div><div style="font-weight:500;font-size:10.5pt">Recuperat</div><div style="font-size:7.5pt;color:var(--t4)">Total que no va a abocador</div></div><div style="height:9mm;border-radius:999px;background:#E6EFE7;overflow:hidden"><div style="height:100%;width:92%;border-radius:999px;background:#1A5336"></div></div><div class="disp" style="font-size:20pt;color:#1A5336;text-align:right">92%</div></div></div>
+      <p class="small mt4">Valors il·lustratius per mostrar el format. No descriuen cap centre.</p>
+    </div>
+    <div>
+      <ul class="clean">
+        <li><b>Sèrie base:</b> #0B2016. <b>Dada destacada:</b> #1A5336 (només una per gràfic).</li>
+        <li><b>Pista i quadrícula:</b> #E6EFE7 / #E2E8E4, filets d’1 px.</li>
+        <li><b>Més sèries:</b> tints aprovats 60% (#769886) i 40% (#A3BAAF). Màxim quatre colors; la resta, agrupada a “Altres”.</li>
+        <li><b>Barres arrodonides</b> (rounded-full), valors en Cabinet 500 a la dreta.</li>
+        <li><b>Sempre</b> unitat, període i font, o la pill “Dades d’exemple”.</li>
+        <li><b>Sense</b> 3D, ombres, degradats ni colors fora de la paleta. Vermells/ambres només per a estats d’alerta.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span><b>Benlligat</b> · Brand Book v1.1</span><span>11</span></div>
+</section>
+
+<!-- 11 IMAGERY -->
+<section class="page">
+  <p class="eyebrow">06 · Imatgeria i iconografia</p>
+  <h2 class="disp" style="font-size:26pt">Objectes reals, <span class="acc">icones de línia.</span></h2>
+  <div class="grid g2 mt6" style="gap:8mm">
+    <div>
+      <p class="eyebrow n">Iconografia · definit</p>
+      <div style="display:flex;gap:4mm;margin-top:3mm"><div style="text-align:center"><div style="width:18mm;height:18mm;border-radius:5mm;background:#1A5336;display:grid;place-items:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div><p style="font-size:7pt;color:var(--t3);margin-top:1mm">Fulla</p></div><div style="text-align:center"><div style="width:18mm;height:18mm;border-radius:5mm;background:#fff;border:1px solid var(--bd);display:grid;place-items:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1A5336" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></svg></div><p style="font-size:7pt;color:var(--t3);margin-top:1mm">QR</p></div><div style="text-align:center"><div style="width:18mm;height:18mm;border-radius:5mm;background:#fff;border:1px solid var(--bd);display:grid;place-items:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1A5336" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/><path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/><path d="m14 16-3 3 3 3"/><path d="M8.293 13.596 7.196 9.5 3.1 10.598"/><path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843"/><path d="m13.378 9.633 4.096 1.098 1.097-4.096"/></svg></div><p style="font-size:7pt;color:var(--t3);margin-top:1mm">Reciclar</p></div><div style="text-align:center"><div style="width:18mm;height:18mm;border-radius:5mm;background:#fff;border:1px solid var(--bd);display:grid;place-items:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1A5336" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><p style="font-size:7pt;color:var(--t3);margin-top:1mm">Inspecció</p></div><div style="text-align:center"><div style="width:18mm;height:18mm;border-radius:5mm;background:#fff;border:1px solid var(--bd);display:grid;place-items:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1A5336" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div><p style="font-size:7pt;color:var(--t3);margin-top:1mm">Llit</p></div></div>
+      <ul class="clean mt4">
+        <li>Família <b>Lucide</b> (la que ja usa la web), traç 2 px, extrems arrodonits.</li>
+        <li>Color #1A5336 sobre clar; llima #A6E08A sobre #0B2016 o sobre verd; blanc dins del símbol.</li>
+        <li>Mida 20–32 px. Contenidor opcional: quadrat de 48 px amb radi 16 px (icona llima sobre llima 15%) o el quadrat del símbol.</li>
+        <li>No barregis famílies d’icones ni icones plenes amb icones de línia.</li>
+      </ul>
+      <p class="eyebrow n mt6">Il·lustració 3D</p>
+      <p class="small mt2">El matalàs interactiu de la web (capes i materials) és l’actiu visual propi. Usa’l per explicar materials i final de vida, en colors de la paleta.</p>
+    </div>
+    <div class="pending">
+      <span class="pill">Pendent de definir</span>
+      <h3 class="mt3">Estil fotogràfic</h3>
+      <p class="mt2">Encara no hi ha fotografia de marca aprovada. Recomanació:</p>
+      <ul class="clean mt2">
+        <li>Fotografia real d’habitacions, plantes i magatzems, amb llum natural i sense persones identificables (pacients).</li>
+        <li>Detalls de producte: etiqueta QR, costures, capes del matalàs.</li>
+        <li>Tons neutres i freds; deixa espai net per al text. Cap filtre de color verd.</li>
+        <li>Evita bancs d’imatges genèrics (fulles, mans amb planteta, globus terraqüi).</li>
+        <li>Mai el logotip sobre una foto amb molt de detall: usa una franja #FAFAFA o #0B2016.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span><b>Benlligat</b> · Brand Book v1.1</span><span>12</span></div>
+</section>
+
+<!-- 12 DATA HONESTY -->
+<section class="page dark" style="background:var(--deep)">
+  <p class="eyebrow" style="color:#A3BAAF">07 · Regla d’honestedat de dades · obligatòria</p>
+  <h2 class="disp" style="color:#fff;font-size:34pt;max-width:240mm">Si una dada no és real, <span style="color:#A6E08A">ho diem a la mateixa vista.</span></h2>
+  <div class="grid g3 mt8">
+    <div style="border-left:2px solid #A3BAAF;padding-left:4mm"><p class="disp" style="color:#A6E08A;font-size:20pt">1</p><p style="color:#E5F2EA" class="mt2">Tota xifra d’exemple porta la pill <b>“Dades d’exemple”</b> al costat, no en un peu de pàgina llunyà.</p></div>
+    <div style="border-left:2px solid #A3BAAF;padding-left:4mm"><p class="disp" style="color:#A6E08A;font-size:20pt">2</p><p style="color:#E5F2EA" class="mt2">Tota afirmació sense font verificada porta <b>[font pendent]</b>. Només es cita com a fet una font real (p. ex. GS1 Digital Link, Reglament (UE) 2024/1781).</p></div>
+    <div style="border-left:2px solid #A3BAAF;padding-left:4mm"><p class="disp" style="color:#A6E08A;font-size:20pt">3</p><p style="color:#E5F2EA" class="mt2">No s’inventen clients, logos de tercers, testimonis, premis ni resultats. Un CO<sub style="font-size:.7em">2</sub> calculat indica mètode i abast.</p></div>
+  </div>
+  <div style="display:flex;gap:4mm;margin-top:12mm;align-items:center;flex-wrap:wrap">
+    <span class="pill">Dades d’exemple</span>
+    <span class="pill" style="background:transparent;border:1px solid #4A6558;color:#E5F2EA">[font pendent]</span>
+    <span class="pill" style="background:#1A5336;color:#fff">Fet general</span>
+    <p class="small" style="color:#A3BAAF;margin-left:2mm">Les tres etiquetes del deck. Estil: 11 px · 600 · majúscules · tracking 0,14 em.</p>
+  </div>
+  <div class="grid g2" style="margin-top:10mm;gap:8mm">
+    <div>
+      <div style="background:#fff;border-radius:6mm;padding:6mm;display:flex;gap:6mm;align-items:center">
+        <div><p class="disp" style="font-size:34pt;color:#0B2016">128</p><p class="small">matalassos en una planta</p></div>
+        <span class="pill" style="margin-left:auto;align-self:flex-start">Dades d’exemple</span>
+      </div>
+      <p class="x" style="color:#E5F2EA"><i class="y">✓</i>Correcte: l’etiqueta és al costat de la xifra.</p>
+    </div>
+    <div>
+      <div style="background:#fff;border-radius:6mm;padding:6mm;display:flex;gap:6mm;align-items:center">
+        <div><p class="disp" style="font-size:34pt;color:#0B2016">-40% CO<sub style="font-size:.5em">2</sub></p><p class="small">en el primer any</p></div>
+      </div>
+      <p class="x" style="color:#E5F2EA"><i>×</i>Incorrecte: xifra sense font, sense mètode ni etiqueta.</p>
+    </div>
+  </div>
+  <div class="foot" style="border-color:rgba(255,255,255,.15);color:#A3BAAF"><span><b style="color:#fff">Benlligat</b> · Brand Book v1.1</span><span>13</span></div>
+</section>
+
+<!-- 13 APPLICATIONS -->
+<section class="page">
+  <p class="eyebrow">08 · Aplicacions</p>
+  <h2 class="disp" style="font-size:26pt">Web, deck i document: <span class="acc">un sol sistema.</span></h2>
+  <div class="grid g3 mt6">
+    <div>
+      <div class="card" style="padding:0;overflow:hidden;height:82mm">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:3mm 4mm;border-bottom:1px solid var(--bd);background:#fff"><img src="assets/logo-full.png" style="height:6mm"><span class="btn" style="font-size:6.5pt;padding:1.3mm 3mm">Vols provar?</span></div>
+        <div style="padding:5mm;background:#FAFAFA;height:100%"><span class="badge" style="font-size:5.5pt;padding:.6mm 2.4mm">Passaport digital</span><p class="disp" style="font-size:17pt;margin-top:2mm">Cada matalàs, <span class="acc">amb identitat.</span></p><p style="font-size:7pt;margin-top:2mm">Inventari, inspeccions i final de vida.</p><span class="btn" style="font-size:6.5pt;padding:1.3mm 3mm;margin-top:3mm">Demana una demo</span></div>
+      </div>
+      <h3 class="mt4">Web</h3>
+      <p class="small mt2">Capçalera fixa de 64 px; en fer scroll, vidre (blanc 70% + desenfocament). Logo a l’esquerra, enllaços 14 px #4A5D53, CTA rodó. Amplada màx. 1280 px, marges 24/48 px, seccions de 96–128 px.</p>
+    </div>
+    <div>
+      <div class="card" style="padding:5mm;height:82mm;display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span class="eyebrow" style="font-size:6pt">03 · Què n’obté el centre</span><span style="display:flex;gap:1mm"><i style="width:5mm;height:1.2mm;border-radius:9px;background:var(--g)"></i><i style="width:3mm;height:1.2mm;border-radius:9px;background:var(--bd)"></i><i style="width:3mm;height:1.2mm;border-radius:9px;background:var(--bd)"></i></span></div>
+        <p style="font-size:7.5pt;color:var(--t4);margin-top:3mm">Quina informació té l’equip?</p>
+        <p class="disp" style="font-size:16pt;margin-top:1mm">Tot l’historial, <span class="acc">a un escaneig.</span></p>
+        <div style="display:flex;gap:2mm;margin-top:auto"><div class="stat" style="padding-left:2mm"><div class="v" style="font-size:12pt">96</div><div class="l" style="font-size:6pt">En servei</div></div><div class="stat" style="padding-left:2mm"><div class="v" style="font-size:12pt">22</div><div class="l" style="font-size:6pt">En revisió</div></div><span class="pill" style="font-size:5pt;margin-left:auto;align-self:end">Dades d’exemple</span></div>
+      </div>
+      <h3 class="mt4">Deck</h3>
+      <p class="small mt2">Una pregunta per pantalla, resposta en titular gran amb la frase clau en verd. Barra de progrés superior, notes i fonts al lateral.</p>
+    </div>
+    <div>
+      <div class="card" style="padding:5mm;height:82mm;display:flex;flex-direction:column">
+        <img src="assets/logo-full.png" style="height:5mm;align-self:flex-start">
+        <p class="eyebrow" style="font-size:6pt;margin-top:5mm">Informe · Planta 3</p>
+        <p class="disp" style="font-size:14pt;margin-top:1mm">Resum d’estat <span class="acc">del parc.</span></p>
+        <div style="margin-top:3mm;display:grid;gap:1.2mm"><div style="display:flex;justify-content:space-between;font-size:7pt;border-bottom:1px solid var(--bd);padding-bottom:1mm;color:var(--t2)"><span>Matalassos en servei</span><b style="color:var(--d)">—</b></div><div style="display:flex;justify-content:space-between;font-size:7pt;border-bottom:1px solid var(--bd);padding-bottom:1mm;color:var(--t2)"><span>Inspeccions pendents</span><b style="color:var(--d)">—</b></div><div style="display:flex;justify-content:space-between;font-size:7pt;border-bottom:1px solid var(--bd);padding-bottom:1mm;color:var(--t2)"><span>Incidències obertes</span><b style="color:var(--d)">—</b></div><div style="display:flex;justify-content:space-between;font-size:7pt;border-bottom:1px solid var(--bd);padding-bottom:1mm;color:var(--t2)"><span>Baixes del període</span><b style="color:var(--d)">—</b></div></div>
+        <p style="font-size:5.5pt;color:var(--t4);margin-top:auto;border-top:1px solid var(--bd);padding-top:1.5mm">benlligat.com · pàgina 1</p>
+      </div>
+      <h3 class="mt4">Document</h3>
+      <p class="small mt2">A4, fons blanc o #FAFAFA, marges 18 mm, logotip a dalt a l’esquerra, titulars Cabinet, cos Outfit 10–11 pt, peu amb web i paginació.</p>
+    </div>
+  </div>
+  <div class="foot"><span><b>Benlligat</b> · Brand Book v1.1</span><span>14</span></div>
+</section>
+
+<!-- 14 QUICK REF -->
+<section class="page">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start"><div><p class="eyebrow">09 · Fitxa ràpida</p><h2 class="disp" style="font-size:26pt">Benlligat en <span class="acc">una pàgina.</span></h2></div><img src="assets/logo-full.png" style="width:50mm"></div>
+  <div class="grid g4 mt8" style="gap:5mm">
+    <div class="card" style="padding:6mm;min-height:92mm"><p class="eyebrow n">Color</p>
+      <p class="mt2" style="font-size:9pt"><span class="chip" style="background:#1A5336"></span><b>#1A5336</b> Order Green</p>
+      <p class="mt2" style="font-size:9pt"><span class="chip" style="background:#0B2016"></span><b>#0B2016</b> Ink · text</p>
+      <p class="mt2" style="font-size:9pt"><span class="chip" style="background:#4A5D53"></span><b>#4A5D53</b> Text secundari</p>
+      <p class="mt2" style="font-size:9pt"><span class="chip" style="background:#FAFAFA"></span><b>#FAFAFA</b> Fons</p>
+      <p class="mt2" style="font-size:9pt"><span class="chip" style="background:#fff"></span><b>#FFFFFF</b> Targetes</p>
+      <p class="mt2" style="font-size:9pt"><span class="chip" style="background:#E2E8E4"></span><b>#E2E8E4</b> Vores</p>
+      <p class="mt2" style="font-size:9pt"><span class="chip" style="background:#133D27"></span><b>#133D27</b> Hover</p>
+      <p class="mt2" style="font-size:9pt"><span class="chip" style="background:#A6E08A"></span><b>#A6E08A</b> Llima</p>
+    </div>
+    <div class="card" style="padding:6mm;min-height:92mm"><p class="eyebrow n">Tipografia</p>
+      <p class="disp mt3" style="font-size:20pt">Cabinet 500</p><p class="small">H1 −0,05 em · 0,95 · #0B2016<br>H2/H3/xifres −0,025 em</p>
+      <p class="mt3" style="font-size:16pt;font-weight:400;color:var(--d)">Outfit 400</p><p class="small">Cos 18–20 px · 1,625 · #4A5D53</p>
+      <p class="mt3"><span class="badge">Badge 500 · 12 px</span></p><p class="small mt2">#E6EFE7 / #1A5336</p>
+    </div>
+    <div class="card" style="padding:6mm;min-height:92mm"><p class="eyebrow n">Forma</p>
+      <p class="small mt2">Radi base 16 px · targetes 24 px · botons i pills 999 px · símbol 33%</p>
+      <p class="small mt2">Vora 1 px #E2E8E4 · ombra 0 8 30 rgba(0,0,0,.04)</p>
+      <div class="mt3" style="display:flex;gap:2mm;flex-wrap:wrap"><span class="btn" style="font-size:8pt;padding:2mm 4mm">Vols provar?</span><span class="btn l" style="font-size:8pt;padding:2mm 4mm">Llima</span></div>
+      <p class="small mt3">Hover #133D27 · focus anell llima</p>
+    </div>
+    <div class="card" style="padding:6mm;min-height:92mm"><p class="eyebrow n">Regles d’or</p>
+      <ul class="clean"><li style="font-size:8.5pt">Titulars Cabinet 500; una frase clau en verd.</li><li style="font-size:8.5pt">Verd escàs: aprox. 8% de la superfície.</li><li style="font-size:8.5pt">Logo sense deformar ni recolorir; espai x = ¼ del símbol.</li><li style="font-size:8.5pt">Xifres d’exemple sempre etiquetades.</li><li style="font-size:8.5pt">Text: AA mínim (4,5:1).</li></ul>
+    </div>
+  </div>
+  <div class="card mt6" style="padding:4mm 5mm;display:flex;gap:6mm;align-items:center">
+    <span class="pill" style="background:#FFF4E5;color:#7A4B00;white-space:nowrap">Pendent de definir</span>
+    <p class="small">SVG oficial del logotip · Pantone/CMYK validat per impremta · estil fotogràfic · color d’alerta oficial.</p>
+  </div>
+  <div class="foot"><span><b>Benlligat</b> · Brand Book v1.1 · Octubre 2026</span><span>15</span></div>
+</section>
+</body></html>

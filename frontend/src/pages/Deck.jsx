@@ -695,9 +695,9 @@ export default function Deck() {
             </div>
           </Slide>
 
-          <Slide id="07" wide>
+          <Slide id="07">
             <QHead kicker={SECTIONS[7].kicker} question={SECTIONS[7].question} answer={SECTIONS[7].answer} />
-            <div className="mt-10 grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.9fr)]">
+            <div className="mt-10 grid gap-4">
               <div className="grid gap-3 sm:grid-cols-2">
                 {MATERIALS.map((item) => (
                   <article key={item.title} className="rounded-3xl border border-[#E2E8E4] bg-white p-5">
@@ -720,13 +720,13 @@ export default function Deck() {
             </div>
           </Slide>
 
-          <Slide id="08" wide>
+          <Slide id="08">
             <QHead kicker={SECTIONS[8].kicker} question={SECTIONS[8].question} answer={SECTIONS[8].answer} />
             <p className="mt-4 max-w-2xl text-sm text-[#4A5D53]">
               Passa el ratolí o toca un rol.
               <Mark n={1} />
             </p>
-            <RevealTiles items={ROLES} testId="deck-role-tiles" columns="lg:grid-cols-3" />
+            <RevealTiles items={ROLES} testId="deck-role-tiles" columns="" />
           </Slide>
 
           <Slide id="09" wide>

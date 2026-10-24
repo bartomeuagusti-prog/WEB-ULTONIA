@@ -86,7 +86,7 @@ function Answer({ parts }) {
 
 function ExampleTag() {
   return (
-    <span className="inline-flex items-center rounded-full bg-[#E5F2EA] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1A5336]">
+    <span className="inline-flex items-center rounded-full bg-[#E6EFE7] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1A5336]">
       Dades d'exemple
     </span>
   );
@@ -96,8 +96,8 @@ function QHead({ kicker, question, answer }) {
   return (
     <header className="max-w-4xl">
       <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1A5336]">{kicker}</p>
-      <p className="mt-4 text-lg text-[#4A6558] sm:text-xl">{question}</p>
-      <h2 className="mt-2 font-display text-[2.15rem] font-extrabold leading-[0.98] tracking-[-0.03em] text-[#062A18] sm:text-5xl lg:text-[3.35rem]">
+      <p className="mt-4 text-lg text-[#4A5D53] sm:text-xl">{question}</p>
+      <h2 className="mt-2 font-display text-[2.15rem] font-medium leading-[0.95] tracking-tighter text-[#0B2016] sm:text-5xl lg:text-[3.35rem]">
         <Answer parts={answer} />
       </h2>
     </header>
@@ -146,14 +146,14 @@ function RevealTiles({ items, testId, columns = "xl:grid-cols-4" }) {
             <span className="grid h-8 w-8 place-items-center rounded-full bg-[#062A18] text-sm font-semibold text-white">
               {i + 1}
             </span>
-            <span className="mt-5 font-display text-2xl font-extrabold tracking-tight text-[#062A18]">
+            <span className="mt-5 font-display text-2xl font-medium tracking-tighter leading-[0.95] text-[#0B2016]">
               {item.title}
             </span>
             <span className="relative mt-3 min-h-[4.5rem]">
-              <span className={shown ? "hidden" : "block text-sm leading-relaxed text-[#3D5648]"}>
+              <span className={shown ? "hidden" : "block text-sm leading-relaxed text-[#4A5D53]"}>
                 {item.teaser}
               </span>
-              <span className={shown ? "block text-sm leading-relaxed text-[#062A18]" : "hidden"}>
+              <span className={shown ? "block text-sm leading-relaxed text-[#0B2016]" : "hidden"}>
                 {item.detail}
               </span>
             </span>
@@ -192,12 +192,12 @@ function ExampleBars({ reduced }) {
         return (
           <div key={row.label} className="grid items-center gap-x-4 gap-y-1 sm:grid-cols-[13.5rem_1fr_auto]">
             <div>
-              <div className="font-medium text-[#062A18]">{row.label}</div>
-              <div className="text-sm text-[#4A6558]">{row.note}</div>
+              <div className="font-medium text-[#0B2016]">{row.label}</div>
+              <div className="text-sm text-[#4A5D53]">{row.note}</div>
             </div>
-            <div className="h-8 overflow-hidden rounded-full bg-[#E7EFEA]">
+            <div className="h-8 overflow-hidden rounded-full bg-[#E6EFE7]">
               <div
-                className={accent ? "h-8 rounded-full bg-[#1A5336]" : "h-8 rounded-full bg-[#062A18]"}
+                className={accent ? "h-8 rounded-full bg-[#1A5336]" : "h-8 rounded-full bg-[#0B2016]"}
                 style={{
                   width: shown ? `${(row.value / max) * 100}%` : "0%",
                   transition: reduced ? "none" : "width 800ms cubic-bezier(.22,1,.36,1)",
@@ -208,8 +208,8 @@ function ExampleBars({ reduced }) {
             <div
               className={
                 accent
-                  ? "font-display text-4xl font-extrabold tracking-tight text-[#1A5336]"
-                  : "font-display text-4xl font-extrabold tracking-tight text-[#062A18]"
+                  ? "font-display text-4xl font-medium tracking-tighter leading-[0.95] text-[#1A5336]"
+                  : "font-display text-4xl font-medium tracking-tighter leading-[0.95] text-[#0B2016]"
               }
             >
               {row.value}
@@ -225,14 +225,14 @@ function SidebarBody({ section }) {
   if (section.sidebar === "howto") {
     return (
       <div>
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3D5648]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A5D53]">
           Com llegir aquest deck
         </p>
         <ol className="mt-6 space-y-5">
           {HOW_TO.map((item, i) => (
-            <li key={item.title} className="text-sm leading-relaxed text-[#24503A]">
-              <span className="mb-1 flex items-center gap-2 font-medium text-[#062A18]">
-                <span className="grid h-5 w-5 place-items-center rounded-full bg-[#E5F2EA] text-[11px] font-semibold text-[#1A5336]">
+            <li key={item.title} className="text-sm leading-relaxed text-[#4A5D53]">
+              <span className="mb-1 flex items-center gap-2 font-medium text-[#0B2016]">
+                <span className="grid h-5 w-5 place-items-center rounded-full bg-[#E6EFE7] text-[11px] font-semibold text-[#1A5336]">
                   {i + 1}
                 </span>
                 {item.title}
@@ -242,16 +242,16 @@ function SidebarBody({ section }) {
           ))}
         </ol>
         <div className="mt-8 border-t border-[#E2E8E4] pt-5">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3D5648]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A5D53]">
             Nota d'aquesta portada
           </p>
           {section.notes.map((note) => (
-            <p key={note.n} className="mt-3 text-sm leading-relaxed text-[#24503A]">
+            <p key={note.n} className="mt-3 text-sm leading-relaxed text-[#4A5D53]">
               <span className="font-semibold text-[#1A5336]">{note.n} </span>
               {note.text}
             </p>
           ))}
-          <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4A6558]">
+          <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4A5D53]">
             [font pendent]
           </p>
         </div>
@@ -262,13 +262,13 @@ function SidebarBody({ section }) {
   if (section.sidebar === "next") {
     return (
       <div>
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3D5648]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A5D53]">
           Següent pas
         </p>
-        <p className="mt-4 text-sm leading-relaxed text-[#24503A]">
+        <p className="mt-4 text-sm leading-relaxed text-[#4A5D53]">
           La demo obre el formulari de contacte de la web. No cal sortir del deck.
         </p>
-        <p className="mt-4 text-sm leading-relaxed text-[#24503A]">
+        <p className="mt-4 text-sm leading-relaxed text-[#4A5D53]">
           Fletxa amunt o Re Pàg tornen a la secció anterior.
         </p>
       </div>
@@ -277,19 +277,19 @@ function SidebarBody({ section }) {
 
   return (
     <div>
-      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3D5648]">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A5D53]">
         Fonts i notes
       </p>
-      <p className="mt-2 text-xs text-[#4A6558]">
+      <p className="mt-2 text-xs text-[#4A5D53]">
         {section.id} · {section.nav}
       </p>
       <ol className="mt-6 space-y-5">
         {section.notes.map((note) => (
-          <li key={note.n} className="text-sm leading-relaxed text-[#24503A]">
+          <li key={note.n} className="text-sm leading-relaxed text-[#4A5D53]">
             <span className="font-semibold text-[#1A5336]">{note.n} </span>
             {note.text}
             {note.pending ? (
-              <span className="mt-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4A6558]">
+              <span className="mt-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4A5D53]">
                 [font pendent]
               </span>
             ) : (
@@ -310,7 +310,7 @@ function Logo() {
       <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#1A5336] text-white" aria-hidden="true">
         <Leaf className="h-5 w-5" />
       </span>
-      <span className="font-display text-xl font-bold tracking-tight text-[#1A5336]">Benlligat</span>
+      <span className="font-display text-xl font-medium tracking-tighter leading-[0.95] text-[#0B2016]">Benlligat</span>
     </span>
   );
 }
@@ -409,13 +409,13 @@ export default function Deck() {
   const openContact = () => setContactOpen(true);
 
   return (
-    <div className="deck-root min-h-screen bg-[#FAFAFA] text-[#062A18]" data-testid="deck-root" data-active={section.id}>
+    <div className="deck-root min-h-screen bg-[#FAFAFA] text-[#0B2016]" data-testid="deck-root" data-active={section.id}>
       <header className="sticky top-0 z-40 border-b border-[#E2E8E4] bg-[#FAFAFA]/95 backdrop-blur">
         <div className="flex h-16 items-center gap-3 px-4 sm:px-6">
           <Link to="/" className="shrink-0 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#1A5336]" aria-label="Benlligat, torna a l'inici">
             <Logo />
           </Link>
-          <span className="hidden shrink-0 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A6558] sm:inline">
+          <span className="hidden shrink-0 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A5D53] sm:inline">
             Hospitals
           </span>
           <nav
@@ -434,7 +434,7 @@ export default function Deck() {
                   className={
                     on
                       ? "inline-flex shrink-0 items-center rounded-full bg-[#1A5336] py-1.5 pl-2.5 pr-3 text-[11px] font-semibold tracking-wide text-white"
-                      : "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold text-[#3D5648] hover:bg-[#E6EFE9]"
+                      : "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold text-[#4A5D53] hover:bg-[#E6EFE9]"
                   }
                 >
                   <span>{item.id}</span>
@@ -443,14 +443,14 @@ export default function Deck() {
               );
             })}
           </nav>
-          <span className="hidden shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4A6558] xl:inline">
+          <span className="hidden shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4A5D53] xl:inline">
             Confidencial
           </span>
           <button
             type="button"
             onClick={openContact}
             data-testid="deck-demo-button"
-            className="shrink-0 rounded-full bg-[#1A5336] px-3 py-2 text-sm font-medium text-white hover:bg-[#133D27] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#062A18] sm:px-4"
+            className="shrink-0 rounded-full bg-[#1A5336] px-3 py-2 text-sm font-medium text-white hover:bg-[#133D27] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A6E08A] sm:px-4"
           >
             <span className="sm:hidden">Demo</span>
             <span className="hidden sm:inline">Demana una demo</span>
@@ -480,7 +480,7 @@ export default function Deck() {
               aria-expanded={notesOpen}
               data-testid="deck-notes-toggle"
               onClick={() => setNotesOpen((open) => !open)}
-              className="flex w-full items-center justify-between px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3D5648]"
+              className="flex w-full items-center justify-between px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A5D53]"
             >
               {section.sidebar === "howto"
                 ? "Com llegir aquest deck"
@@ -502,16 +502,16 @@ export default function Deck() {
                 <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1A5336]">
                   Benlligat · Hospitals
                 </p>
-                <h1 className="mt-5 max-w-3xl font-display text-[2.6rem] font-extrabold leading-[0.96] tracking-[-0.035em] text-[#062A18] sm:text-6xl lg:text-[4.35rem]">
+                <h1 className="mt-5 max-w-3xl font-display text-[2.6rem] font-medium leading-[0.95] tracking-tighter text-[#0B2016] sm:text-6xl lg:text-[4.35rem]">
                   El control del matalàs hospitalari,{" "}
                   <span className="text-[#1A5336]">de la planta a la baixa.</span>
                 </h1>
-                <p className="mt-6 max-w-xl text-base leading-relaxed text-[#24503A] sm:text-lg">
+                <p className="mt-6 max-w-xl text-base leading-relaxed text-[#4A5D53] sm:text-lg">
                   Plataforma per a la gestió circular d'actius físics. El primer és el matalàs:
                   identitat, inspecció, manteniment i fi de vida. El mateix esquema es pot estendre
                   a mobiliari, tèxtils i equipament.
                 </p>
-                <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#3D5648]">
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#4A5D53]">
                   Per a direcció, hoteleria, manteniment, compres i sostenibilitat.
                 </p>
               </div>
@@ -522,11 +522,11 @@ export default function Deck() {
                   </p>
                   <ExampleTag />
                 </div>
-                <p className="mt-5 font-display text-6xl font-extrabold tracking-tight text-[#062A18] sm:text-7xl">
+                <p className="mt-5 font-display text-6xl font-medium tracking-tighter leading-[0.95] text-[#0B2016] sm:text-7xl">
                   128
                   <Mark n={1} />
                 </p>
-                <p className="mt-1 text-[#3D5648]">matalassos en una planta</p>
+                <p className="mt-1 text-[#4A5D53]">matalassos en una planta</p>
                 <div className="mt-6 grid grid-cols-3 gap-3 border-t border-[#E2E8E4] pt-5">
                   {[
                     ["96", "En servei"],
@@ -534,12 +534,12 @@ export default function Deck() {
                     ["10", "De baixa"],
                   ].map(([value, label]) => (
                     <div key={label} className="border-l-2 border-[#1A5336] pl-3">
-                      <div className="font-display text-2xl font-extrabold text-[#062A18]">{value}</div>
-                      <div className="text-xs text-[#3D5648]">{label}</div>
+                      <div className="font-display text-2xl font-medium tracking-tighter leading-[0.95] text-[#0B2016]">{value}</div>
+                      <div className="text-xs text-[#4A5D53]">{label}</div>
                     </div>
                   ))}
                 </div>
-                <p className="mt-5 text-sm leading-relaxed text-[#4A6558]">
+                <p className="mt-5 text-sm leading-relaxed text-[#4A5D53]">
                   Cap d'aquestes xifres és d'un centre real. Serveixen per ensenyar el format.
                 </p>
               </aside>
@@ -551,11 +551,11 @@ export default function Deck() {
             <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {WHY_CARDS.map((card) => (
                 <article key={card.title} className="rounded-3xl border border-[#E2E8E4] bg-white p-5">
-                  <h3 className="font-display text-xl font-extrabold tracking-tight">
+                  <h3 className="font-display text-xl font-medium tracking-tighter leading-[0.95] text-[#0B2016]">
                     {card.title}
                     <Mark n={card.n} />
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[#24503A]">{card.body}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-[#4A5D53]">{card.body}</p>
                 </article>
               ))}
             </div>
@@ -566,15 +566,15 @@ export default function Deck() {
             <div className="mt-10 grid gap-3 sm:grid-cols-2">
               {PRODUCT_POINTS.map((point) => (
                 <article key={point.title} className="rounded-3xl border border-[#E2E8E4] bg-white px-5 py-4">
-                  <h3 className="font-display text-lg font-extrabold tracking-tight">
+                  <h3 className="font-display text-lg font-medium tracking-tighter leading-[0.95] text-[#0B2016]">
                     {point.title}
                     <Mark n={point.n} />
                   </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-[#24503A]">{point.body}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-[#4A5D53]">{point.body}</p>
                 </article>
               ))}
             </div>
-            <p className="mt-6 max-w-3xl rounded-3xl border border-[#E2E8E4] bg-white px-5 py-4 text-sm leading-relaxed text-[#24503A]">
+            <p className="mt-6 max-w-3xl rounded-3xl border border-[#E2E8E4] bg-white px-5 py-4 text-sm leading-relaxed text-[#4A5D53]">
               El passaport de Benlligat s'alinea amb aquests principis d'identitat i traçabilitat.
               No presentem el passaport digital europeu com un requisit ja vigent per a tots els matalassos.
               <Mark n={2} />
@@ -583,7 +583,7 @@ export default function Deck() {
 
           <Slide id="03" wide>
             <QHead kicker={SECTIONS[3].kicker} question={SECTIONS[3].question} answer={SECTIONS[3].answer} />
-            <p className="mt-4 max-w-2xl text-sm text-[#3D5648]">
+            <p className="mt-4 max-w-2xl text-sm text-[#4A5D53]">
               Passa el ratolí per damunt d'un pas, o toca'l, per llegir el detall.
               <Mark n={1} />
             </p>
@@ -596,12 +596,12 @@ export default function Deck() {
               <div className="grid gap-3 sm:grid-cols-2">
                 {INCIDENTS.map((item) => (
                   <article key={item.title} className="rounded-3xl border border-[#E2E8E4] bg-white p-5">
-                    <h3 className="font-display text-xl font-extrabold tracking-tight">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[#24503A]">{item.body}</p>
+                    <h3 className="font-display text-xl font-medium tracking-tighter leading-[0.95] text-[#0B2016]">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#4A5D53]">{item.body}</p>
                   </article>
                 ))}
                 <article className="rounded-3xl border border-[#E2E8E4] bg-[#062A18] p-5 text-white sm:col-span-2">
-                  <h3 className="font-display text-xl font-extrabold tracking-tight">Ronda i vida útil</h3>
+                  <h3 className="font-display text-xl font-medium tracking-tighter leading-[0.95] text-white">Ronda i vida útil</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/75">
                     Les inspeccions es programen. Cada registre actualitza l'estat i la vida útil estimada,
                     també quan una intervenció l'allarga.
@@ -619,12 +619,12 @@ export default function Deck() {
                 <dl className="mt-4 divide-y divide-[#E2E8E4]">
                   {EXAMPLE_FILE.map(([label, value]) => (
                     <div key={label} className="grid grid-cols-[7.5rem_1fr] gap-3 py-2.5 text-sm">
-                      <dt className="text-[#4A6558]">{label}</dt>
-                      <dd className="font-medium text-[#062A18]">{value}</dd>
+                      <dt className="text-[#4A5D53]">{label}</dt>
+                      <dd className="font-medium text-[#0B2016]">{value}</dd>
                     </div>
                   ))}
                 </dl>
-                <p className="mt-2 text-xs text-[#4A6558]">
+                <p className="mt-2 text-xs text-[#4A5D53]">
                   Pantalla de disseny amb dades d'exemple.
                   <Mark n={2} />
                 </p>
@@ -637,24 +637,24 @@ export default function Deck() {
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {OUTCOMES.map((item) => (
                 <article key={item.title} className="rounded-3xl border border-[#E2E8E4] bg-white p-5">
-                  <h3 className="font-display text-xl font-extrabold tracking-tight">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[#24503A]">{item.body}</p>
+                  <h3 className="font-display text-xl font-medium tracking-tighter leading-[0.95] text-[#0B2016]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[#4A5D53]">{item.body}</p>
                 </article>
               ))}
             </div>
             <article className="mt-4 rounded-3xl border border-[#E2E8E4] bg-white p-5 sm:p-7">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <h3 className="font-display text-2xl font-extrabold tracking-tight">
+                  <h3 className="font-display text-2xl font-medium tracking-tighter leading-[0.95] text-[#0B2016]">
                     Destí de les baixes, un any d'exemple
                     <Mark n={1} />
                   </h3>
-                  <p className="mt-1 text-sm text-[#3D5648]">Unitats il·lustratives. No és un centre real.</p>
+                  <p className="mt-1 text-sm text-[#4A5D53]">Unitats il·lustratives. No és un centre real.</p>
                 </div>
                 <ExampleTag />
               </div>
               <ExampleBars reduced={reduced} />
-              <p className="mt-6 border-t border-[#E2E8E4] pt-4 text-sm leading-relaxed text-[#24503A]">
+              <p className="mt-6 border-t border-[#E2E8E4] pt-4 text-sm leading-relaxed text-[#4A5D53]">
                 Quan el centre tingui estoc real, l'informe substitueix aquestes barres. Els kg desviats i el CO₂
                 evitat surten d'aquelles baixes, per a la memòria de sostenibilitat.
                 <Mark n={2} />
@@ -667,14 +667,14 @@ export default function Deck() {
             <div className="mt-10 grid gap-3 lg:grid-cols-3">
               {EOL_STEPS.map((step) => (
                 <article key={step.n} className="rounded-3xl border border-[#E2E8E4] bg-white p-5">
-                  <span className="font-display text-3xl font-extrabold text-[#1A5336]">{step.n}</span>
-                  <h3 className="mt-3 font-display text-2xl font-extrabold tracking-tight">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[#24503A]">{step.body}</p>
+                  <span className="font-display text-3xl font-medium tracking-tighter leading-[0.95] text-[#1A5336]">{step.n}</span>
+                  <h3 className="mt-3 font-display text-2xl font-medium tracking-tighter leading-[0.95] text-[#0B2016]">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[#4A5D53]">{step.body}</p>
                 </article>
               ))}
             </div>
             <div className="mt-4 rounded-3xl border border-[#E2E8E4] bg-white p-5">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3D5648]">Cinc destins</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A5D53]">Cinc destins</p>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {DESTINATIONS.map((name) => (
                   <li key={name} className="rounded-full border border-[#E2E8E4] px-3 py-1.5 text-sm font-medium">
@@ -682,7 +682,7 @@ export default function Deck() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 text-sm leading-relaxed text-[#24503A]">
+              <p className="mt-4 text-sm leading-relaxed text-[#4A5D53]">
                 L'estat higiènic decideix si la unitat es pot reutilitzar o només se'n recuperen materials.
                 Cada traspàs queda amb qui el rep i amb quin document.
                 <Mark n={1} />
@@ -697,8 +697,8 @@ export default function Deck() {
               <div className="grid gap-3 sm:grid-cols-2">
                 {MATERIALS.map((item) => (
                   <article key={item.title} className="rounded-3xl border border-[#E2E8E4] bg-white p-5">
-                    <h3 className="font-display text-xl font-extrabold tracking-tight">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[#24503A]">{item.body}</p>
+                    <h3 className="font-display text-xl font-medium tracking-tighter leading-[0.95] text-[#0B2016]">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#4A5D53]">{item.body}</p>
                   </article>
                 ))}
               </div>
@@ -706,7 +706,7 @@ export default function Deck() {
                 <div className="relative h-[340px] overflow-hidden rounded-3xl border border-[#E2E8E4] bg-[#F3F6F4] lg:h-[460px]">
                   <Mattress3D explodeRef={explodeRef} reducedMotion={reduced} />
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-[#3D5648]">
+                <p className="mt-3 text-sm leading-relaxed text-[#4A5D53]">
                   Vista de capes per ensenyar que un matalàs no és un sol material. El passaport ha de poder dir
                   què porta aquella unitat, quan es conegui.
                   <Mark n={1} />
@@ -718,7 +718,7 @@ export default function Deck() {
 
           <Slide id="08" wide>
             <QHead kicker={SECTIONS[8].kicker} question={SECTIONS[8].question} answer={SECTIONS[8].answer} />
-            <p className="mt-4 max-w-2xl text-sm text-[#3D5648]">
+            <p className="mt-4 max-w-2xl text-sm text-[#4A5D53]">
               Passa el ratolí o toca un rol.
               <Mark n={1} />
             </p>
@@ -730,15 +730,15 @@ export default function Deck() {
             <ol className="mt-10 space-y-3">
               {PILOT_STEPS.map((step) => (
                 <li key={step.n} className="grid gap-3 rounded-3xl border border-[#E2E8E4] bg-white p-5 sm:grid-cols-[4rem_1fr] sm:items-start">
-                  <span className="font-display text-3xl font-extrabold text-[#1A5336]">{step.n}</span>
+                  <span className="font-display text-3xl font-medium tracking-tighter leading-[0.95] text-[#1A5336]">{step.n}</span>
                   <div>
-                    <h3 className="font-display text-2xl font-extrabold tracking-tight">{step.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-[#24503A]">{step.body}</p>
+                    <h3 className="font-display text-2xl font-medium tracking-tighter leading-[0.95] text-[#0B2016]">{step.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-[#4A5D53]">{step.body}</p>
                   </div>
                 </li>
               ))}
             </ol>
-            <p className="mt-4 text-sm text-[#3D5648]">
+            <p className="mt-4 text-sm text-[#4A5D53]">
               Sense preu i sense calendari tancat en aquest deck.
               <Mark n={1} />
             </p>
@@ -748,17 +748,17 @@ export default function Deck() {
             <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)]">
               <div>
                 <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1A5336]">Gràcies</p>
-                <h2 className="mt-4 font-display text-[2.8rem] font-extrabold leading-[0.96] tracking-[-0.035em] sm:text-6xl lg:text-[4.4rem]">
+                <h2 className="mt-4 font-display text-[2.8rem] font-medium leading-[0.95] tracking-tighter text-[#0B2016] sm:text-6xl lg:text-[4.4rem]">
                   Gràcies pel teu <span className="text-[#1A5336]">temps.</span>
                 </h2>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#24503A]">
+                <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#4A5D53]">
                   Si vols seguir la conversa, demana una demo. És el mateix formulari de la web.
                 </p>
               </div>
               <article className="rounded-3xl border border-[#E2E8E4] bg-white p-6 sm:p-7">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#1A5336]">Contacte</p>
-                <h3 className="mt-3 font-display text-3xl font-extrabold tracking-tight">Demana una demo</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#3D5648]">
+                <h3 className="mt-3 font-display text-3xl font-medium tracking-tighter leading-[0.95] text-[#0B2016]">Demana una demo</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#4A5D53]">
                   Direcció, hoteleria, manteniment, compres o sostenibilitat. Explica des de quina planta voldríeu començar.
                 </p>
                 <button
@@ -770,7 +770,7 @@ export default function Deck() {
                   Demana una demo
                 </button>
                 <div className="mt-6 border-t border-[#E2E8E4] pt-5">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A6558]">Web</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A5D53]">Web</p>
                   <div className="mt-2 flex items-center justify-between gap-3">
                     <span className="font-medium">Pàgina principal</span>
                     <Link to="/" className="text-sm font-semibold text-[#1A5336] hover:underline">

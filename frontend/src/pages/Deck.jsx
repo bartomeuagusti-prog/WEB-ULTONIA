@@ -253,9 +253,6 @@ function SidebarBody({ section }) {
               {note.text}
             </p>
           ))}
-          <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4A5D53]">
-            [font pendent]
-          </p>
         </div>
       </div>
     );
@@ -280,7 +277,7 @@ function SidebarBody({ section }) {
   return (
     <div>
       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A5D53]">
-        Fonts i notes
+        Anotacions
       </p>
       <p className="mt-2 text-xs text-[#4A5D53]">
         {section.id} · {section.nav}
@@ -290,11 +287,7 @@ function SidebarBody({ section }) {
           <li key={note.n} className="text-sm leading-relaxed text-[#4A5D53]">
             <span className="font-semibold text-[#1A5336]">{note.n} </span>
             {note.text}
-            {note.pending ? (
-              <span className="mt-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4A5D53]">
-                [font pendent]
-              </span>
-            ) : (
+            {note.pending ? null : (
               <span className="mt-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1A5336]">
                 Fet general
               </span>
@@ -498,7 +491,7 @@ export default function Deck() {
                 ? "Com llegir aquest dossier"
                 : section.sidebar === "next"
                   ? "Següent pas"
-                  : "Fonts i notes"}
+                  : "Anotacions"}
               <span aria-hidden="true">{notesOpen ? "−" : "+"}</span>
             </button>
             {notesOpen ? (

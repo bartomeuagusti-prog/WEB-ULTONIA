@@ -247,7 +247,7 @@ export const HOW_TO = [
   },
   {
     title: "Les notes viuen al marge",
-    body: "El número al text obre la nota d'aquesta secció. Si diu [font pendent], encara no hi ha citació.",
+    body: "El número al text obre la nota d'aquesta secció.",
   },
 ];
 

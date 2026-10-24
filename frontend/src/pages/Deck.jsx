@@ -515,8 +515,8 @@ export default function Deck() {
                   Benlligat · Hospitals
                 </p>
                 <h1 className="mt-5 max-w-3xl font-display text-[2.6rem] font-medium leading-[0.95] tracking-tighter text-[#0B2016] sm:text-6xl lg:text-[4.35rem]">
-                  El control del matalàs hospitalari,{" "}
-                  <span className="text-[#1A5336]">de la planta a la baixa.</span>
+                  El matalàs hospitalari,{" "}
+                  <span className="text-[#1A5336]">sota control.</span>
                 </h1>
                 <p className="mt-6 max-w-xl text-base leading-relaxed text-[#4A5D53] sm:text-lg">
                   Plataforma per a la gestió circular d'actius físics. El primer és el matalàs:

@@ -46,10 +46,10 @@ function useFinePointer() {
   return fine;
 }
 
-function Mark({ n }) {
+function Mark({ n, tone = "text-[#0C7E7C]" }) {
   if (!n) return null;
   return (
-    <sup className="ml-0.5 text-[0.65em] font-semibold text-[#0C7E7C]">
+    <sup className={`ml-0.5 text-[0.65em] font-semibold ${tone}`}>
       <a
         href="#deck-sidebar"
         className="no-underline hover:underline"
@@ -109,14 +109,14 @@ function Slide({ id, children, wide }) {
       id={`deck-${id}`}
       tabIndex={-1}
       data-testid={`deck-section-${id}`}
-      className="min-h-[calc(100dvh-4rem)] scroll-mt-16 border-b border-[#E3E8EF] px-5 py-14 outline-none sm:px-8 lg:px-14 lg:py-20"
+      className="min-h-[calc(100dvh-4rem)] scroll-mt-28 border-b border-[#E3E8EF] px-5 py-14 outline-none sm:px-8 lg:scroll-mt-16 lg:px-14 lg:py-20"
     >
       <div className={wide ? "mx-auto max-w-6xl" : "mx-auto max-w-5xl"}>{children}</div>
     </section>
   );
 }
 
-function RevealTiles({ items, reduced, testId, columns = "xl:grid-cols-4" }) {
+function RevealTiles({ items, testId, columns = "xl:grid-cols-4" }) {
   const fine = useFinePointer();
   const [open, setOpen] = useState(null);
   return (
@@ -136,7 +136,10 @@ function RevealTiles({ items, reduced, testId, columns = "xl:grid-cols-4" }) {
             }}
             onFocus={() => setOpen(i)}
             onBlur={() => setOpen((cur) => (cur === i ? null : cur))}
-            onClick={() => setOpen((cur) => (cur === i ? null : i))}
+            onClick={() => {
+              if (fine) return;
+              setOpen((cur) => (cur === i ? null : i));
+            }}
             className="flex min-h-[210px] flex-col rounded-3xl border border-[#E3E8EF] bg-white p-5 text-left shadow-[0_1px_2px_rgba(16,35,58,0.04)] transition-colors hover:border-[#0F9D9A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F9D9A]"
           >
             <span className="grid h-8 w-8 place-items-center rounded-full bg-[#10233A] text-sm font-semibold text-white">
@@ -146,21 +149,10 @@ function RevealTiles({ items, reduced, testId, columns = "xl:grid-cols-4" }) {
               {item.title}
             </span>
             <span className="relative mt-3 min-h-[4.5rem]">
-              <span
-                className={[
-                  "block text-sm leading-relaxed text-[#5E6E82]",
-                  shown ? "hidden" : "block",
-                  !reduced ? "transition-opacity" : "",
-                ].join(" ")}
-              >
+              <span className={shown ? "hidden" : "block text-sm leading-relaxed text-[#5E6E82]"}>
                 {item.teaser}
               </span>
-              <span
-                className={[
-                  "text-sm leading-relaxed text-[#10233A]",
-                  shown ? "block" : "hidden",
-                ].join(" ")}
-              >
+              <span className={shown ? "block text-sm leading-relaxed text-[#10233A]" : "hidden"}>
                 {item.detail}
               </span>
             </span>
@@ -336,7 +328,8 @@ export default function Deck() {
   const indexRef = useRef(0);
   const lockRef = useRef(false);
   const lockTimer = useRef(0);
-  const explodeRef = useRef(0.72);
+  const syncRef = useRef(() => {});
+  const explodeRef = useRef(1);
   const section = SECTIONS[active];
 
   useEffect(() => {
@@ -349,7 +342,10 @@ export default function Deck() {
 
   useEffect(() => {
     const sync = () => {
-      const line = 96;
+      const headerBottom = document.querySelector("header")?.getBoundingClientRect().bottom ?? 64;
+      const notes = document.querySelector("[data-testid='deck-notes-bar']");
+      const notesVisible = notes && notes.getClientRects().length > 0;
+      const line = (notesVisible ? notes.getBoundingClientRect().bottom : headerBottom) + 20;
       let current = 0;
       SECTIONS.forEach((item, i) => {
         const el = document.getElementById(`deck-${item.id}`);
@@ -358,6 +354,7 @@ export default function Deck() {
       indexRef.current = current;
       setActive((prev) => (prev === current ? prev : current));
     };
+    syncRef.current = sync;
     const onScroll = () => {
       if (lockRef.current) return;
       sync();
@@ -383,13 +380,18 @@ export default function Deck() {
       setActive(next);
       const el = document.getElementById(`deck-${SECTIONS[next].id}`);
       if (!el) return;
-      el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+      const root = document.documentElement;
+      const previous = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      el.scrollIntoView({ block: "start", behavior: "instant" });
+      root.style.scrollBehavior = previous;
       window.clearTimeout(lockTimer.current);
       lockTimer.current = window.setTimeout(() => {
         lockRef.current = false;
-      }, reduced ? 80 : 1400);
+        syncRef.current();
+      }, 60);
     },
-    [reduced],
+    [],
   );
 
   useEffect(() => {
@@ -474,7 +476,10 @@ export default function Deck() {
         </aside>
 
         <div>
-          <div className="sticky top-16 z-30 border-b border-[#E3E8EF] bg-[#EEF2F6] lg:hidden">
+          <div
+            className="sticky top-16 z-30 border-b border-[#E3E8EF] bg-[#EEF2F6] lg:hidden"
+            data-testid="deck-notes-bar"
+          >
             <button
               type="button"
               aria-expanded={notesOpen}
@@ -587,7 +592,7 @@ export default function Deck() {
               Passa el ratolí per damunt d'un pas, o toca'l, per llegir el detall.
               <Mark n={1} />
             </p>
-            <RevealTiles items={FLOW_TILES} reduced={reduced} testId="deck-flow-tiles" />
+            <RevealTiles items={FLOW_TILES} testId="deck-flow-tiles" />
           </Slide>
 
           <Slide id="04">
@@ -605,7 +610,7 @@ export default function Deck() {
                   <p className="mt-2 text-sm leading-relaxed text-white/75">
                     Les inspeccions es programen. Cada registre actualitza l'estat i la vida útil estimada,
                     també quan una intervenció l'allarga.
-                    <Mark n={1} />
+                    <Mark n={1} tone="text-[#9FF3EF]" />
                   </p>
                 </article>
               </div>
@@ -703,7 +708,7 @@ export default function Deck() {
                 ))}
               </div>
               <div>
-                <div className="relative h-[340px] overflow-hidden rounded-3xl border border-[#E3E8EF] bg-white lg:h-[460px]">
+                <div className="relative h-[340px] overflow-hidden rounded-3xl border border-[#E3E8EF] bg-[#E7EEF3] lg:h-[460px]">
                   <Mattress3D explodeRef={explodeRef} reducedMotion={reduced} />
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-[#5E6E82]">
@@ -722,7 +727,7 @@ export default function Deck() {
               Passa el ratolí o toca un rol.
               <Mark n={1} />
             </p>
-            <RevealTiles items={ROLES} reduced={reduced} testId="deck-role-tiles" columns="lg:grid-cols-3" />
+            <RevealTiles items={ROLES} testId="deck-role-tiles" columns="lg:grid-cols-3" />
           </Slide>
 
           <Slide id="09">

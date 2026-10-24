@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "@/App.css";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -13,6 +13,7 @@ import {
 } from "@/components/StaticSections";
 import { Toaster } from "@/components/ui/sonner";
 import Admin from "@/pages/Admin";
+import Deck from "@/pages/Deck";
 
 function Landing() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -39,6 +40,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/dossier" element={<Deck />} />
+        <Route path="/deck" element={<Navigate to="/dossier" replace />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
       <Toaster position="top-center" richColors />

@@ -107,3 +107,21 @@ html {
 .canvas-grab:active {
     cursor: grabbing;
 }
+
+.deck-root ::selection {
+    background: #c9e6d4;
+    color: #062a18;
+}
+
+.deck-scroll {
+    scrollbar-width: none;
+}
+.deck-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html:has(.deck-root) {
+        scroll-behavior: auto;
+    }
+}

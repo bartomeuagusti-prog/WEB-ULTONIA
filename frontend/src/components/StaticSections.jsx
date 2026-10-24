@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -284,6 +285,13 @@ export function Footer({ onContact }) {
         </div>
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row justify-between gap-4 text-sm text-white/50">
           <span>© 2026 Benlligat. Tots els drets reservats.</span>
+          <Link
+            to="/dossier"
+            data-testid="footer-deck-link"
+            className="text-xs text-white/30 hover:text-white/55"
+          >
+            Dossier
+          </Link>
           <span>Economia circular · Passaport digital · Blockchain</span>
         </div>
       </div>

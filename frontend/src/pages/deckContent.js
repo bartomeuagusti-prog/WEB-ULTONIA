@@ -1,4 +1,4 @@
-/** Copy and structure for the hospital deck. Example figures are illustrative only. */
+/** Copy and structure for the hospital dossier. Example figures are illustrative only. */
 
 export const SECTIONS = [
   {
@@ -286,7 +286,7 @@ export const PRODUCT_POINTS = [
   { title: "Vida útil", body: "Una estimació, i la possibilitat d'allargar-la quan hi ha una intervenció." },
   { title: "Fi de vida", body: "Retirada, classificació i destí, amb cadena de custòdia i documents." },
   { title: "Impacte", body: "Kg desviats i CO₂ evitat a partir de l'estoc real del centre, quan n'hi ha." },
-  { title: "Comparativa", body: "Entre centres, anònima. En aquest deck no hi ha rànquing." },
+  { title: "Comparativa", body: "Entre centres, anònima. En aquest dossier no hi ha rànquing." },
   { title: "Més actius", body: "El primer és el matalàs. El mateix esquema es pot estendre a mobiliari, tèxtils i equipament.", n: 3 },
 ];
 

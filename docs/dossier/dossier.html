@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ca"><head><meta charset="utf-8"><title>Benlligat · Dossier hospitals</title>
+<style>
+/* Fonts: Cabinet Grotesk (Fontshare) i Outfit (Google Fonts). build.py les busca a FONT_DIR. */
+@font-face{font-family:'Cabinet Grotesk';src:url('${FONT_DIR}/CabinetGrotesk-500.ttf');font-weight:500}
+@font-face{font-family:'Outfit';src:url('${FONT_DIR}/Outfit.ttf');font-weight:100 900}
+@page{size:210mm 297mm;margin:0}
+:root{--g:#1A5336;--d:#0B2016;--deep:#062A18;--bg:#FAFAFA;--bd:#E2E8E4;--t2:#4A5D53;--tint:#E6EFE7;--lime:#A6E08A}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:'Outfit',sans-serif;color:var(--d);background:var(--bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;overflow:hidden;position:relative;padding:12mm 13mm 0;display:flex;flex-direction:column}
+.disp{font-family:'Cabinet Grotesk',sans-serif;font-weight:500;letter-spacing:-0.05em;line-height:.95;color:var(--d)}
+.acc{color:var(--g)}
+.eyebrow{font-size:7pt;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--g)}
+.eyebrow.n{color:var(--t2)}
+header{display:flex;justify-content:space-between;align-items:center}
+header img{height:10mm;margin-left:-2mm}
+header .meta{text-align:right;font-size:7pt;color:var(--t2);line-height:1.5}
+h1{font-size:27pt;margin-top:5mm}
+.lead{font-size:9.5pt;line-height:1.5;color:var(--t2);margin-top:3mm;max-width:170mm}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:2.6mm;margin-top:4.5mm}
+.card{background:#fff;border:1px solid var(--bd);border-radius:4mm;padding:3mm 4.2mm 3.2mm}
+.card .q{font-size:7pt;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--t2)}
+.card .q b{color:var(--g);font-weight:600}
+.card h2{font-size:12pt;margin-top:1.6mm;letter-spacing:-.035em;line-height:1.05}
+.card .a{font-family:'Cabinet Grotesk';font-weight:500;font-size:10.5pt;letter-spacing:-.02em;line-height:1.15;margin-top:1.2mm;color:var(--d)}
+.card ul{list-style:none;margin-top:1.8mm;border-top:1px solid var(--bd);padding-top:1.6mm}
+.card li{font-size:7.6pt;line-height:1.42;color:var(--t2);padding-left:3.2mm;position:relative;margin-top:.5mm}
+.card li::before{content:"";position:absolute;left:0;top:1.45mm;width:1.3mm;height:1.3mm;border-radius:50%;background:var(--g)}
+.pilot{margin-top:2.6mm;background:#fff;border:1px solid var(--bd);border-radius:4mm;padding:3.8mm 4.2mm;display:grid;grid-template-columns:44mm 1fr;gap:4mm;align-items:center}
+.pilot h2{font-size:13pt;letter-spacing:-.035em;line-height:1.05;margin-top:1.2mm}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm}
+.steps div{border-left:1.5px solid var(--g);padding-left:2.4mm}
+.steps .n{font-family:'Cabinet Grotesk';font-weight:500;font-size:11pt;color:var(--g);letter-spacing:-.03em}
+.steps b{display:block;font-weight:500;font-size:8pt;color:var(--d);margin-top:.4mm}
+.steps p{font-size:7pt;line-height:1.38;color:var(--t2);margin-top:.4mm}
+.notes{margin-top:2.6mm;font-size:6.6pt;line-height:1.45;color:var(--t2);display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.notes b{color:var(--d);font-weight:600}
+.cta{margin:auto -13mm 0;background:var(--deep);color:#fff;padding:5.5mm 13mm 6mm;display:flex;justify-content:space-between;align-items:center}
+.cta .disp{color:#fff;font-size:17pt}
+.cta .disp span{color:var(--lime)}
+.cta p{font-size:8pt;color:rgba(255,255,255,.75);margin-top:1.5mm}
+.btn{display:inline-block;border-radius:999px;background:var(--lime);color:var(--d);font-weight:500;font-size:9.5pt;padding:2.6mm 5.5mm;text-decoration:none;white-space:nowrap}
+.url{font-size:8pt;color:rgba(255,255,255,.75);margin-top:1.8mm;text-align:right}
+.url a{color:#fff;text-decoration:none;font-weight:500}
+</style></head><body>
+<section class="page">
+  <header>
+    <img src="assets/logo.png" alt="Benlligat">
+    <div class="meta"><span class="eyebrow">Dossier · Hospitals</span><br>Octubre 2026</div>
+  </header>
+  <h1 class="disp">Cada matalàs, <span class="acc">amb identitat i historial.</span></h1>
+  <p class="lead">Benlligat és una plataforma de traçabilitat per a matalassos hospitalaris: un QR per unitat, un passaport digital amb l'estat i l'historial, i una baixa documentada. Aquest dossier en resumeix les 8 preguntes.</p>
+  <div class="grid">${CARDS}</div>
+  <div class="pilot">
+    <div><p class="eyebrow">Com es comença</p><h2 class="disp">Per <span class="acc">una planta</span>, no per tot l'hospital.</h2></div>
+    <div class="steps">${STEPS}</div>
+  </div>
+  <div class="notes">
+    <p><b>Honestedat de dades.</b> Aquest resum no conté xifres de cap centre. Els kg desviats i el CO₂ evitat es calculen amb l'estoc real del centre quan n'hi ha. Pilot sense preu ni calendari tancat en aquest dossier.</p>
+    <p><b>Passaport digital.</b> El Reglament (UE) 2024/1781 crea el marc europeu d'ecodisseny i del passaport digital de producte; les obligacions concretes arriben per grup de producte. Per si sol, avui no imposa un passaport a tots els matalassos.</p>
+  </div>
+  <div class="cta">
+    <div><div class="disp">Vols veure-ho <span>a la teva planta?</span></div><p>Direcció, hoteleria, manteniment, compres o sostenibilitat: demana una demo.</p></div>
+    <div style="text-align:right"><a class="btn" href="https://benlligat.vercel.app/dossier">Demana una demo</a><p class="url"><a href="https://benlligat.vercel.app">benlligat.vercel.app</a></p></div>
+  </div>
+</section>
+</body></html>

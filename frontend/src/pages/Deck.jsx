@@ -20,6 +20,8 @@ import {
   WHY_CARDS,
 } from "@/pages/deckContent";
 
+const DOSSIER_PDF = "/dossier/Benlligat-Dossier.pdf";
+
 function useReducedMotion() {
   const [reduced, setReduced] = useState(() =>
     typeof window !== "undefined" &&
@@ -226,7 +228,7 @@ function SidebarBody({ section }) {
     return (
       <div>
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A5D53]">
-          Com llegir aquest deck
+          Com llegir aquest dossier
         </p>
         <ol className="mt-6 space-y-5">
           {HOW_TO.map((item, i) => (
@@ -266,7 +268,7 @@ function SidebarBody({ section }) {
           Següent pas
         </p>
         <p className="mt-4 text-sm leading-relaxed text-[#4A5D53]">
-          La demo obre el formulari de contacte de la web. No cal sortir del deck.
+          La demo obre el formulari de contacte de la web. No cal sortir del dossier.
         </p>
         <p className="mt-4 text-sm leading-relaxed text-[#4A5D53]">
           Fletxa amunt o Re Pàg tornen a la secció anterior.
@@ -329,7 +331,7 @@ export default function Deck() {
 
   useEffect(() => {
     const previous = document.title;
-    document.title = "Benlligat · Deck hospitals";
+    document.title = "Benlligat · Dossier hospitals";
     return () => {
       document.title = previous;
     };
@@ -419,7 +421,7 @@ export default function Deck() {
             Hospitals
           </span>
           <nav
-            aria-label="Seccions del deck"
+            aria-label="Seccions del dossier"
             data-testid="deck-progress"
             className="deck-scroll flex min-w-0 flex-1 items-center gap-1 overflow-x-auto px-1"
           >
@@ -446,6 +448,16 @@ export default function Deck() {
           <span className="hidden shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#4A5D53] xl:inline">
             Confidencial
           </span>
+          <a
+            href={DOSSIER_PDF}
+            download="Benlligat-Dossier.pdf"
+            data-testid="dossier-pdf-header"
+            aria-label="Descarregar en PDF (1 pàgina)"
+            className="shrink-0 rounded-full border border-[#1A5336] px-3 py-2 text-sm font-medium text-[#1A5336] hover:bg-[#E6EFE9] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1A5336] sm:px-4"
+          >
+            <span className="sm:hidden">PDF</span>
+            <span className="hidden sm:inline">Descarregar en PDF (1 pàgina)</span>
+          </a>
           <button
             type="button"
             onClick={openContact}
@@ -483,7 +495,7 @@ export default function Deck() {
               className="flex w-full items-center justify-between px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A5D53]"
             >
               {section.sidebar === "howto"
-                ? "Com llegir aquest deck"
+                ? "Com llegir aquest dossier"
                 : section.sidebar === "next"
                   ? "Següent pas"
                   : "Fonts i notes"}
@@ -739,7 +751,7 @@ export default function Deck() {
               ))}
             </ol>
             <p className="mt-4 text-sm text-[#4A5D53]">
-              Sense preu i sense calendari tancat en aquest deck.
+              Sense preu i sense calendari tancat en aquest dossier.
               <Mark n={1} />
             </p>
           </Slide>
@@ -769,6 +781,14 @@ export default function Deck() {
                 >
                   Demana una demo
                 </button>
+                <a
+                  href={DOSSIER_PDF}
+                  download="Benlligat-Dossier.pdf"
+                  data-testid="dossier-pdf-thanks"
+                  className="mt-3 block w-full rounded-full border border-[#1A5336] py-3 text-center text-base font-medium text-[#1A5336] hover:bg-[#E6EFE9]"
+                >
+                  Descarregar en PDF (1 pàgina)
+                </a>
                 <div className="mt-6 border-t border-[#E2E8E4] pt-5">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#4A5D53]">Web</p>
                   <div className="mt-2 flex items-center justify-between gap-3">

@@ -14,6 +14,8 @@ import {
 import { Toaster } from "@/components/ui/sonner";
 import Admin from "@/pages/Admin";
 import Deck from "@/pages/Deck";
+import Privacy from "@/pages/Privacy";
+import LegalNotice from "@/pages/LegalNotice";
 
 function Landing() {
   const [contactOpen, setContactOpen] = useState(false);
@@ -42,6 +44,8 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/dossier" element={<Deck />} />
         <Route path="/deck" element={<Navigate to="/dossier" replace />} />
+        <Route path="/privacitat" element={<Privacy />} />
+        <Route path="/avis-legal" element={<LegalNotice />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
       <Toaster position="top-center" richColors />

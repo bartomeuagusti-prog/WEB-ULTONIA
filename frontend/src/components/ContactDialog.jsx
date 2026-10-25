@@ -16,6 +16,7 @@ import { api } from "@/lib/api";
 
 export default function ContactDialog({ open, onOpenChange }) {
   const [submitting, setSubmitting] = useState(false);
+  const [consent, setConsent] = useState(false);
   const [form, setForm] = useState({ nom: "", hotel: "", email: "", missatge: "" });
 
   const update = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -26,11 +27,16 @@ export default function ContactDialog({ open, onOpenChange }) {
       toast.error("Cal omplir el nom i el correu electrònic.");
       return;
     }
+    if (!consent) {
+      toast.error("Cal acceptar la política de privacitat per enviar el formulari.");
+      return;
+    }
     setSubmitting(true);
     try {
       await api.post("/leads", form);
       onOpenChange(false);
       setForm({ nom: "", hotel: "", email: "", missatge: "" });
+      setConsent(false);
       toast.success("Gràcies! Ens posarem en contacte molt aviat.", {
         description: "Un membre de l'equip de Benlligat et prepararà una demo personalitzada.",
       });
@@ -113,9 +119,33 @@ export default function ContactDialog({ open, onOpenChange }) {
               className="rounded-lg focus-visible:ring-[#A6E08A] min-h-[90px]"
             />
           </div>
+          <div className="flex items-start gap-2.5">
+            <input
+              id="consent"
+              type="checkbox"
+              required
+              checked={consent}
+              onChange={(e) => setConsent(e.target.checked)}
+              data-testid="contact-consent-checkbox"
+              className="mt-0.5 h-4 w-4 shrink-0 rounded border-[#E2E8E4] accent-[#1A5336] cursor-pointer"
+            />
+            <label htmlFor="consent" className="text-sm text-[#4A5D53] leading-snug cursor-pointer">
+              He llegit i accepto la{" "}
+              <a
+                href="/privacitat"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="contact-privacy-link"
+                className="text-[#1A5336] underline hover:text-[#133D27]"
+              >
+                política de privacitat
+              </a>
+              . *
+            </label>
+          </div>
           <Button
             type="submit"
-            disabled={submitting}
+            disabled={submitting || !consent}
             data-testid="contact-submit-button"
             className="w-full rounded-full bg-[#1A5336] hover:bg-[#133D27] text-white py-6 text-base font-medium transition-all"
           >

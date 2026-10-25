@@ -284,7 +284,15 @@ export function Footer({ onContact }) {
           </div>
         </div>
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row justify-between gap-4 text-sm text-white/50">
-          <span>© 2026 Benlligat. Tots els drets reservats.</span>
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-6">
+            <span>© 2026 Benlligat. Tots els drets reservats.</span>
+            <Link to="/privacitat" data-testid="footer-privacy-link" className="hover:text-white">
+              Política de privacitat
+            </Link>
+            <Link to="/avis-legal" data-testid="footer-legal-link" className="hover:text-white">
+              Avís legal
+            </Link>
+          </div>
           <Link
             to="/dossier"
             data-testid="footer-deck-link"

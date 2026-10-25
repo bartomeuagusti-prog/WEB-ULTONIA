@@ -99,12 +99,28 @@ export default function Privacy() {
         Espanyola de Protecció de Dades (<A href="https://www.aepd.es">www.aepd.es</A>).
       </P>
 
-      <H2>8. Cookies i eines de tercers</H2>
+      <H2>8. Cookies i emmagatzematge local</H2>
       <P>
-        <span className="rounded px-1 py-0.5 bg-[#A6E08A]/50 text-[#0B2016] font-semibold">
-          [SECCIÓ DE COOKIES PENDENT]
-        </span>{" "}
-        Aquest apartat s'ha de completar quan es decideixi quines eines d'analítica fa servir el web.
+        Aquest lloc web no fa servir cookies d'analítica, de publicitat ni de seguiment, i no carrega
+        eines de tercers que perfilin la teva navegació.
+      </P>
+      <P>
+        Només s'utilitza l'emmagatzematge estrictament necessari per al funcionament del servei: quan
+        una persona de l'equip de Benlligat inicia sessió a l'àrea d'administració, el navegador desa
+        al seu emmagatzematge local (localStorage) un identificador de sessió que caduca i que
+        s'esborra en tancar la sessió. Els visitants del web públic no reben cap cookie ni dada
+        emmagatzemada al navegador.
+      </P>
+      <P>
+        Per mostrar el web, el navegador descarrega tipografies de Google Fonts i de Fontshare, i
+        algunes imatges de Pexels. Aquests serveis reben l'adreça IP del teu navegador per poder-te
+        enviar els fitxers, però el web no els fa servir per seguir-te ni instal·la cookies a través d'ells.
+      </P>
+      <P>
+        Com que només s'utilitza emmagatzematge tècnicament necessari, no cal demanar-te el
+        consentiment mitjançant un bàner de cookies (article 22.2 de la LSSI-CE). Si en el futur
+        incorporem altres cookies o eines d'analítica, actualitzarem aquesta política i et demanarem
+        el consentiment quan correspongui.
       </P>
 
       <H2>9. Canvis en aquesta política</H2>

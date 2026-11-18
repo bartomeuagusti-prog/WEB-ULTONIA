@@ -112,7 +112,7 @@ export function PassportSection() {
 const ACTORS = [
   { icon: Building2, t: "Hotelers", d: "Creen i ubiquen els matalassos a l'inventari." },
   { icon: Factory, t: "Fabricants", d: "Aporten dades tècniques i de petjada de carboni." },
-  { icon: Truck, t: "Gestors de residus", d: "Com TIRGY: planifiquen la recollida, la distribució, el tractament i el reciclatge." },
+  { icon: Truck, t: "Gestors de residus", d: "Planifiquen la recollida, la distribució, el tractament i el reciclatge." },
   { icon: BadgeCheck, t: "Certificadores", d: "Validen l'origen, el procés i la qualitat." },
   { icon: HeartHandshake, t: "Entitats del tercer sector", d: "Reaprofitament i reintroducció social dels matalassos reutilitzables per allargar-ne la vida útil." },
   { icon: Landmark, t: "Administració", d: "Tots comparteixen una mateixa font de veritat." },
